@@ -5,7 +5,7 @@ import Product from "./Product";
 function App() {
   return (
     <div>
-      <Product name="Banana" description="Fresh fruit" price="$100" />
+      <Product name="Banana" description="Fresh fruit" price="100$" />
     </div>
   );
 }
