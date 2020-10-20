@@ -1,11 +1,12 @@
 import React from "react";
 import "./App.css";
-import Product from "./Product";
+import ToDo from "./ToDo";
 
 function App() {
   return (
-    <div>
-      <Product name="Banana" description="Fresh fruit" price="100$" />
+    <div className="wrapper">
+      <h1 className="title">To Do List</h1>
+      <ToDo />
     </div>
   );
 }
