@@ -2,13 +2,10 @@ import React, { Component } from "react";
 import Task from "./Task";
 
 class ToDo extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      tasks: [],
-      inputValue: "",
-    };
-  }
+  state = {
+    tasks: [],
+    inputValue: "",
+  };
   handleChange = (event) => {
     this.setState({
       inputValue: event.target.value,
