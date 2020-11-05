@@ -1,0 +1,9 @@
+.task {
+  color: #2e384a;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  word-break: break-all;
+  padding: 10px;
+}

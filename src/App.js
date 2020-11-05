@@ -1,11 +1,11 @@
 import React from "react";
 import "./App.css";
-import ToDo from "./ToDo";
+import ToDo from "./components/ToDo/ToDo";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
     <div className="wrapper">
-      <h1 className="title">To Do List</h1>
       <ToDo />
     </div>
   );
