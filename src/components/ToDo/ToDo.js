@@ -15,6 +15,7 @@ class ToDo extends Component {
   state = {
     tasks: [],
     inputValue: "",
+    selectedTasks: new Set(),
   };
   handleChange = (event) => {
     this.setState({
@@ -45,13 +46,39 @@ class ToDo extends Component {
       tasks: newTasks,
     });
   };
+  handleCheck = (id) => {
+    const selectedTasks = new Set(this.state.selectedTasks);
+    if (selectedTasks.has(id)) {
+      selectedTasks.delete(id);
+    } else {
+      selectedTasks.add(id);
+    }
+    this.setState({
+      selectedTasks,
+    });
+  };
+  removeSelected = () => {
+    let tasks = [...this.state.tasks];
+    this.state.selectedTasks.forEach((id) => {
+      tasks = tasks.filter((task) => task._id !== id);
+    });
+    this.setState({
+      tasks,
+      selectedTasks: new Set(),
+    });
+  };
   render() {
-    const { inputValue } = this.state;
-    const { tasks } = this.state;
+    const { inputValue, tasks, selectedTasks } = this.state;
+
     const newTaskList = tasks.map((el, i) => {
       return (
         <Col key={el._id} xs={12} sm={6} md={4} lg={3} xl={2}>
-          <Task newTask={el} removeTask={this.removeTask} />
+          <Task
+            newTask={el}
+            removeTask={this.removeTask}
+            onCheck={this.handleCheck}
+            disabled={!!selectedTasks.size}
+          />
         </Col>
       );
     });
@@ -76,6 +103,7 @@ class ToDo extends Component {
                     onKeyDown={this.handleKeyDown}
                     value={inputValue}
                     type="text"
+                    disabled={!!selectedTasks.size}
                   />
                   <InputGroup.Append>
                     <Button
@@ -89,6 +117,18 @@ class ToDo extends Component {
               </Col>
             </Row>
             <Row>{newTaskList}</Row>
+            <Row className="justify-content-center">
+              <Col xs={4} className="mt-3">
+                {!!tasks.length && (
+                  <Button
+                    variant="outline-danger"
+                    onClick={this.removeSelected}
+                    disabled={!selectedTasks.size}>
+                    Remove Selected
+                  </Button>
+                )}
+              </Col>
+            </Row>
           </Container>
         </div>
       </>
