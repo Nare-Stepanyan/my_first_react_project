@@ -1,17 +1,11 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import Task from "../Task/Task";
 import styles from "./ToDo.module.css";
 import idGenerator from "./../../helpers/idGenerator";
-import {
-  Button,
-  Container,
-  Row,
-  Col,
-  InputGroup,
-  FormControl,
-} from "react-bootstrap";
+import InputTask from "./InputTask/InputTask";
+import { Button, Container, Row, Col } from "react-bootstrap";
 
-class ToDo extends Component {
+class ToDo extends PureComponent {
   state = {
     tasks: [],
     inputValue: "",
@@ -67,6 +61,11 @@ class ToDo extends Component {
       selectedTasks: new Set(),
     });
   };
+  removeAll = () => {
+    this.setState({
+      tasks: [],
+    });
+  };
   render() {
     const { inputValue, tasks, selectedTasks } = this.state;
 
@@ -94,37 +93,34 @@ class ToDo extends Component {
             </Row>
             <Row className="justify-content-center">
               <Col lg={6} xs={12} sm={10} md={8}>
-                <InputGroup>
-                  <FormControl
-                    placeholder="Input your new task"
-                    aria-label="Input your new task"
-                    aria-describedby="basic-addon2"
-                    onChange={this.handleChange}
-                    onKeyDown={this.handleKeyDown}
-                    value={inputValue}
-                    type="text"
-                    disabled={!!selectedTasks.size}
-                  />
-                  <InputGroup.Append>
-                    <Button
-                      className={styles.addButton}
-                      onClick={this.handleClick}
-                      disabled={!inputValue}>
-                      Add Task
-                    </Button>
-                  </InputGroup.Append>
-                </InputGroup>
+                <InputTask
+                  inputValue={inputValue}
+                  selectedTasks={selectedTasks}
+                  handleClick={this.handleClick}
+                  handleChange={this.handleChange}
+                  handleKeyDown={this.handleKeyDown}
+                />
               </Col>
             </Row>
             <Row>{newTaskList}</Row>
             <Row className="justify-content-center">
-              <Col xs={4} className="mt-3">
+              <Col xs={2} className="mt-3">
                 {!!tasks.length && (
                   <Button
-                    variant="outline-danger"
+                    variant="danger"
                     onClick={this.removeSelected}
                     disabled={!selectedTasks.size}>
                     Remove Selected
+                  </Button>
+                )}
+              </Col>
+              <Col xs={2} className="mt-3">
+                {!!tasks.length && (
+                  <Button
+                    variant="danger"
+                    onClick={this.removeAll}
+                    disabled={selectedTasks.size}>
+                    Remove All
                   </Button>
                 )}
               </Col>
