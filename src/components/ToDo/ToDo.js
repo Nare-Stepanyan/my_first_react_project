@@ -1,15 +1,22 @@
 import React, { PureComponent } from "react";
-import Task from "../Task/Task";
+import Task from "./Task/Task";
 import styles from "./ToDo.module.css";
 import idGenerator from "./../../helpers/idGenerator";
 import InputTask from "./InputTask/InputTask";
 import { Button, Container, Row, Col } from "react-bootstrap";
+import Confirm from "./Confirm/Confirm";
+import EditTaskModal from "./EditTaskModal/EditTaskModal";
+import RemoveSelectedModal from "./RemoveSelectedModal/RemoveSelectedModal";
 
 class ToDo extends PureComponent {
   state = {
     tasks: [],
     inputValue: "",
     selectedTasks: new Set(),
+    editTask: null,
+    showConfirm: false,
+    removeAllConfirm: false,
+    removeSelected: false,
   };
   handleChange = (event) => {
     this.setState({
@@ -59,15 +66,51 @@ class ToDo extends PureComponent {
     this.setState({
       tasks,
       selectedTasks: new Set(),
+      removeSelected: false,
     });
   };
   removeAll = () => {
     this.setState({
       tasks: [],
+      removeAllConfirm: false,
     });
   };
+  openConfirm = () => {
+    this.setState({
+      showConfirm: !this.state.showConfirm,
+    });
+  };
+  openConfirmRemoveAll = () => {
+    this.setState({
+      removeAllConfirm: !this.state.removeAllConfirm,
+    });
+  };
+  openConfirmSelected = () => {
+    this.setState({
+      removeSelected: !this.state.removeSelected,
+    });
+  };
+  closeRemoveSelectedModal = () => {
+    this.setState({
+      removeSelected: !this.state.removeSelected,
+      selectedTasks: new Set(),
+    });
+  };
+  toggleEdit = (task) => {
+    this.setState({
+      editTask: task,
+    });
+  };
+
   render() {
-    const { inputValue, tasks, selectedTasks } = this.state;
+    const {
+      inputValue,
+      tasks,
+      selectedTasks,
+      removeAllConfirm,
+      removeSelected,
+      editTask,
+    } = this.state;
 
     const newTaskList = tasks.map((el, i) => {
       return (
@@ -77,6 +120,7 @@ class ToDo extends PureComponent {
             removeTask={this.removeTask}
             onCheck={this.handleCheck}
             disabled={!!selectedTasks.size}
+            onEdit={this.toggleEdit}
           />
         </Col>
       );
@@ -108,7 +152,7 @@ class ToDo extends PureComponent {
                 {!!tasks.length && (
                   <Button
                     variant="danger"
-                    onClick={this.removeSelected}
+                    onClick={this.openConfirmSelected}
                     disabled={!selectedTasks.size}>
                     Remove Selected
                   </Button>
@@ -118,7 +162,7 @@ class ToDo extends PureComponent {
                 {!!tasks.length && (
                   <Button
                     variant="danger"
-                    onClick={this.removeAll}
+                    onClick={this.openConfirmRemoveAll}
                     disabled={selectedTasks.size}>
                     Remove All
                   </Button>
@@ -127,6 +171,28 @@ class ToDo extends PureComponent {
             </Row>
           </Container>
         </div>
+        {removeAllConfirm && (
+          <Confirm
+            removeAll={this.removeAll}
+            handleClose={this.openConfirmRemoveAll}
+          />
+        )}
+
+        {removeSelected && (
+          <RemoveSelectedModal
+            removeSelected={this.removeSelected}
+            handleClose={this.closeRemoveSelectedModal}
+            count={selectedTasks.size}
+          />
+        )}
+
+        {!!editTask && (
+          <EditTaskModal
+            task={editTask}
+            onSave={(task) => console.log("task", task)}
+            onClose={() => this.toggleEdit(null)}
+          />
+        )}
       </>
     );
   }

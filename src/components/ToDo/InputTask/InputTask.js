@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./InputTask.module.css";
 import { Button, InputGroup, FormControl } from "react-bootstrap";
+import PropTypes from "prop-types";
 
 function InputTask(props) {
   return (
@@ -20,7 +21,7 @@ function InputTask(props) {
           <Button
             className={styles.addButton}
             onClick={props.handleClick}
-            disabled={!props.inputValue}>
+            disabled={!!props.selectedTasks.size}>
             Add Task
           </Button>
         </InputGroup.Append>
@@ -29,4 +30,11 @@ function InputTask(props) {
   );
 }
 
+InputTask.propTypes = {
+  inputValue: PropTypes.string.isRequired,
+  selectedTasks: PropTypes.object.isRequired,
+  handleClick: PropTypes.func.isRequired,
+  handleChange: PropTypes.func.isRequired,
+  handleKeyDown: PropTypes.func.isRequired,
+};
 export default InputTask;
