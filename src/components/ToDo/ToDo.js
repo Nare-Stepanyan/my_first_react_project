@@ -93,7 +93,6 @@ class ToDo extends PureComponent {
   closeRemoveSelectedModal = () => {
     this.setState({
       removeSelected: !this.state.removeSelected,
-      selectedTasks: new Set(),
     });
   };
   toggleEdit = (task) => {
