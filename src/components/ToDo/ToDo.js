@@ -100,6 +100,17 @@ class ToDo extends PureComponent {
       editTask: task,
     });
   };
+  onSave = (editedTask) => {
+    const tasks = [...this.state.tasks];
+    const editedTaskIndex = this.state.tasks.findIndex(
+      (task, i) => task._id === editedTask._id
+    );
+    tasks[editedTaskIndex] = editedTask;
+    this.setState({
+      tasks: tasks,
+      editTask: null,
+    });
+  };
 
   render() {
     const {
@@ -188,7 +199,7 @@ class ToDo extends PureComponent {
         {!!editTask && (
           <EditTaskModal
             task={editTask}
-            onSave={(task) => console.log("task", task)}
+            onSave={this.onSave}
             onClose={() => this.toggleEdit(null)}
           />
         )}
