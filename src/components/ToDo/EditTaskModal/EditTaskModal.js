@@ -12,20 +12,19 @@ class EditTaskModal extends PureComponent {
   }
   handleChange = (event) => {
     this.setState({
-      text: event.target.value,
+      title: event.target.value,
     });
   };
   saveModal = () => {
-    const { text } = this.state;
-    if (!text) {
+    const { title } = this.state;
+    if (!title) {
       return;
     }
     this.props.onSave(this.state);
   };
   render() {
     const { props } = this;
-    const { text } = this.state;
-    console.log(props);
+    const { title } = this.state;
     return (
       <>
         <Modal show={true} onHide={props.onClose} centered>
@@ -36,7 +35,7 @@ class EditTaskModal extends PureComponent {
             <input
               type="text"
               className={styles.inputModal}
-              value={text}
+              value={title}
               onChange={this.handleChange}
             />
           </Modal.Body>

@@ -31,7 +31,8 @@ class Task extends PureComponent {
       <Card className={`${styles.card} ${checked && styles.selected}`}>
         <Card.Body>
           <input type="checkbox" onClick={this.handleCheck} />
-          <Card.Text className={styles.task}>{newTask.text}</Card.Text>
+          <Card.Title>{newTask.title}</Card.Title>
+          <Card.Text className={styles.task}>{newTask.descrption}</Card.Text>
           <Button
             className={styles.cardButton}
             variant="warning"
