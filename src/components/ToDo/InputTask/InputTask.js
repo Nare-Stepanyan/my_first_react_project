@@ -1,40 +1,58 @@
 import React from "react";
 import styles from "./InputTask.module.css";
-import { Button, InputGroup, FormControl } from "react-bootstrap";
+import { Button, FormControl, Modal } from "react-bootstrap";
 import PropTypes from "prop-types";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 function InputTask(props) {
   return (
-    <>
-      <InputGroup>
+    <Modal show={true} onHide={props.onClose} centered>
+      <Modal.Header closeButton>
+        <Modal.Title>Task Details</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
         <FormControl
-          placeholder="Input your new task"
-          aria-label="Input your new task"
-          aria-describedby="basic-addon2"
+          placeholder="Title"
+          name="title"
           onChange={props.handleChange}
           onKeyDown={props.handleKeyDown}
-          value={props.inputValue}
+          title={props.title}
           type="text"
-          disabled={!!props.selectedTasks.size}
         />
-        <InputGroup.Append>
-          <Button
-            className={styles.addButton}
-            onClick={props.handleClick}
-            disabled={!!props.selectedTasks.size}>
-            Add Task
-          </Button>
-        </InputGroup.Append>
-      </InputGroup>
-    </>
+        <textarea
+          rows="4"
+          placeholder="Description"
+          name="description"
+          description={props.description}
+          onChange={props.handleChange}
+          className={styles.description}></textarea>
+        <DatePicker
+          selected={props.creationDate}
+          onChange={props.handleDate}
+          minDate={new Date()}
+        />
+      </Modal.Body>
+      <Modal.Footer>
+        <Button variant="primary" onClick={props.handleClick}>
+          Add
+        </Button>
+        <Button variant="secondary" onClick={props.onClose}>
+          Cancel
+        </Button>
+      </Modal.Footer>
+    </Modal>
   );
 }
 
 InputTask.propTypes = {
-  inputValue: PropTypes.string.isRequired,
-  selectedTasks: PropTypes.object.isRequired,
+  onClose: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
   handleClick: PropTypes.func.isRequired,
   handleChange: PropTypes.func.isRequired,
   handleKeyDown: PropTypes.func.isRequired,
+  handleDate: PropTypes.func.isRequired,
+  creationDate: PropTypes.string.isRequired,
 };
 export default InputTask;

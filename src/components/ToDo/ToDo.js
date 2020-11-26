@@ -10,12 +10,15 @@ import RemoveSelectedModal from "./RemoveSelectedModal/RemoveSelectedModal";
 class ToDo extends PureComponent {
   state = {
     tasks: [],
-    inputValue: "",
+    title: "",
+    description: "",
+    date: new Date(),
     selectedTasks: new Set(),
     editTask: null,
     showConfirm: false,
     removeAllConfirm: false,
     removeSelected: false,
+    newTaskModal: false,
   };
 
   componentDidMount() {
@@ -38,18 +41,29 @@ class ToDo extends PureComponent {
       .catch((error) => {});
   }
 
-  handleChange = (event) => {
+  handleDate = (date) => {
+    console.log("date", date);
     this.setState({
-      inputValue: event.target.value,
+      date,
+    });
+  };
+
+  handleChange = (event) => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value,
     });
   };
 
   handleClick = () => {
-    if (!this.state.inputValue) {
+    const { title, description, date } = this.state;
+    if (!title) {
       return;
     }
     const task = {
-      title: this.state.inputValue,
+      title,
+      description,
+      date: date.toISOString().slice(0, 10),
     };
     const url = "http://localhost:3001/task";
     const body = JSON.stringify(task);
@@ -69,7 +83,9 @@ class ToDo extends PureComponent {
         const newTask = response;
         this.setState({
           tasks: [newTask, ...this.state.tasks],
-          inputValue: "",
+          newTaskModal: false,
+          title: "",
+          description: "",
         });
       })
       .catch((error) => {});
@@ -200,6 +216,12 @@ class ToDo extends PureComponent {
     });
   };
 
+  toggleAddTaskModal = () => {
+    this.setState({
+      newTaskModal: !this.state.newTaskModal,
+    });
+  };
+
   onSave = (editedTask) => {
     const url = `http://localhost:3001/task/${editedTask._id}`;
     const body = JSON.stringify(editedTask);
@@ -224,6 +246,8 @@ class ToDo extends PureComponent {
           this.setState({
             tasks: tasks,
             editTask: null,
+            title: "",
+            description: "",
           });
         }
       })
@@ -232,12 +256,15 @@ class ToDo extends PureComponent {
 
   render() {
     const {
-      inputValue,
+      title,
+      description,
+      date,
       tasks,
       selectedTasks,
       removeAllConfirm,
       removeSelected,
       editTask,
+      newTaskModal,
     } = this.state;
 
     const newTaskList = tasks.map((el, i) => {
@@ -263,15 +290,14 @@ class ToDo extends PureComponent {
                 <h1 className={styles.title}>My Tasks</h1>
               </Col>
             </Row>
-            <Row className="justify-content-center">
+            <Row className="justify-content-center text-center">
               <Col lg={6} xs={12} sm={10} md={8}>
-                <InputTask
-                  inputValue={inputValue}
-                  selectedTasks={selectedTasks}
-                  handleClick={this.handleClick}
-                  handleChange={this.handleChange}
-                  handleKeyDown={this.handleKeyDown}
-                />
+                <Button
+                  className={styles.addButton}
+                  onClick={this.toggleAddTaskModal}
+                  disabled={!!selectedTasks.size}>
+                  Add Task
+                </Button>
               </Col>
             </Row>
             <Row>{newTaskList}</Row>
@@ -319,6 +345,18 @@ class ToDo extends PureComponent {
             task={editTask}
             onSave={this.onSave}
             onClose={() => this.toggleEdit(null)}
+          />
+        )}
+        {newTaskModal && (
+          <InputTask
+            onClose={this.toggleAddTaskModal}
+            title={title}
+            description={description}
+            creationDate={date}
+            handleClick={this.handleClick}
+            handleChange={this.handleChange}
+            handleKeyDown={this.handleKeyDown}
+            handleDate={this.handleDate}
           />
         )}
       </>

@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
 import PropTypes from "prop-types";
 import RemoveOneTaskModal from "../RemoveOneTaskModal/RemoveOneTaskModal";
+import { formatDate } from "../../../helpers/utils";
 
 class Task extends PureComponent {
   state = {
@@ -31,8 +32,16 @@ class Task extends PureComponent {
       <Card className={`${styles.card} ${checked && styles.selected}`}>
         <Card.Body>
           <input type="checkbox" onClick={this.handleCheck} />
-          <Card.Title>{newTask.title}</Card.Title>
-          <Card.Text className={styles.task}>{newTask.descrption}</Card.Text>
+          <Card.Title className={styles.title}>{newTask.title}</Card.Title>
+          <Card.Text className={styles.task}>
+            Description: {newTask.description}
+          </Card.Text>
+          <Card.Text className={styles.date}>
+            Date: {formatDate(newTask.date)}
+          </Card.Text>
+          <Card.Text className={styles.date}>
+            Created at: {formatDate(newTask.created_at)}
+          </Card.Text>
           <Button
             className={styles.cardButton}
             variant="warning"
