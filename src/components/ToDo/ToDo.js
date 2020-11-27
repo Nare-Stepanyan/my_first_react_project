@@ -66,6 +66,7 @@ class ToDo extends PureComponent {
       date: date.toISOString().slice(0, 10),
     };
     const url = "http://localhost:3001/task";
+
     const body = JSON.stringify(task);
 
     fetch(url, {
