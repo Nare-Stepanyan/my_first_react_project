@@ -4,11 +4,6 @@
 /node_modules
 /.pnp
 .pnp.js
-<<<<<<< HEAD
-=======
-.vscode
-/.vscode
->>>>>>> b3a5edd63dabd33ed4436cfa0dad39aa6e5ceb11
 
 # testing
 /coverage
@@ -26,8 +21,5 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-<<<<<<< HEAD
 .vscode
 /.vscode
-=======
->>>>>>> b3a5edd63dabd33ed4436cfa0dad39aa6e5ceb11
