@@ -1,0 +1,26 @@
+.task {
+  font-size: 20px;
+  display: flex;
+  word-break: break-all;
+  padding: 5px;
+  color: #fff;
+}
+.card {
+  background-color: #e090b9 !important;
+  margin: 20px auto;
+}
+.cardButton {
+  margin: 5px;
+}
+.selected {
+  border: 2px solid #fff !important;
+}
+.title {
+  font-size: 24px !important;
+  color: #061036;
+  text-align: center;
+}
+.date {
+  font-size: 12px !important;
+  color: #061036;
+}

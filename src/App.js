@@ -1,11 +1,12 @@
 import React from "react";
 import "./App.css";
-import Product from "./Product";
+import ToDo from "./components/ToDo/ToDo";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
-    <div>
-      <Product name="Banana" description="Fresh fruit" price="$100" />
+    <div className="wrapper">
+      <ToDo />
     </div>
   );
 }

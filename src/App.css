@@ -1,18 +1,7 @@
-.product {
-  display: flex;
-  justify-content: space-between;
-  width: 800px;
-  margin: 40px auto;
-  border-bottom: 1px solid #4e4e4e;
-  padding: 10px;
+body {
+  background-color: #061036 !important;
 }
-.name,
-.description {
-  color: #4e4e4e;
-  font-size: 20px;
-}
-.price {
-  color: #e64a19;
-  font-weight: bold;
-  font-size: 24px;
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
 }
