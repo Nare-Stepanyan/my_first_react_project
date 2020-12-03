@@ -1,5 +1,5 @@
 import React from "react";
-//import styles from "./ RemoveOneTask.module.css";
+//import styles from "./ RemoveOneTaskModal.module.css";
 import { Button, Modal } from "react-bootstrap";
 import PropTypes from "prop-types";
 

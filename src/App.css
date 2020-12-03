@@ -1,52 +1,7 @@
-<<<<<<< HEAD
-.menu {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  width: 1110px;
-  margin: 0 auto;
-}
-
-.menu a,
-.company_name span {
-  font-size: 14px;
-  color: #fff;
-  padding: 0 20px;
-}
-
-.menu a {
-  text-decoration: none;
-}
-
-header {
-  width: 100%;
-  padding: 30px;
-  background: #1e4844;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-}
-.banner {
-  background: #678482;
-  padding: 40px;
-}
-.banner_text {
-  font-size: 40px;
-  color: #fff;
-  text-align: center;
-}
-.cont_text {
-  font-size: 20px;
-  color: #678482;
-  text-align: center;
-  padding: 30px;
-  max-width: 600px;
-=======
 body {
   background-color: #061036 !important;
 }
 .wrapper {
   max-width: 1200px;
->>>>>>> b3a5edd63dabd33ed4436cfa0dad39aa6e5ceb11
   margin: 0 auto;
 }
