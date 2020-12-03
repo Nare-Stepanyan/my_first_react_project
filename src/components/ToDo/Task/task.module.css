@@ -1,0 +1,19 @@
+.task {
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  word-break: break-all;
+  padding: 10px;
+  color: #fff;
+}
+.card {
+  background-color: #e090b9 !important;
+  margin: 20px auto;
+}
+.cardButton {
+  margin: 5px;
+}
+.selected {
+  border: 2px solid #fff !important;
+}

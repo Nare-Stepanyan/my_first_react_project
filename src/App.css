@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .menu {
   display: flex;
   align-items: center;
@@ -40,5 +41,12 @@ header {
   text-align: center;
   padding: 30px;
   max-width: 600px;
+=======
+body {
+  background-color: #061036 !important;
+}
+.wrapper {
+  max-width: 1200px;
+>>>>>>> b3a5edd63dabd33ed4436cfa0dad39aa6e5ceb11
   margin: 0 auto;
 }
