@@ -17,9 +17,9 @@ function App() {
         <Route path="/" exact component={ToDo} />
         <Route path="/about" exact component={About} />
         <Route path="/contact" exact component={Contact} />
-        <Route path="/404" exact component={NotFound} />
         <Route path="./task/:id" exact component={OneTask} />
-        <Redirect to="404" />
+        <Route path="/404" exact component={NotFound} />
+        <Redirect to="/404" />
       </Switch>
     </div>
   );
