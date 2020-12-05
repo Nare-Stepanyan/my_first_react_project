@@ -1,0 +1,52 @@
+.wrapper {
+  background: url("./../../../assets/images/bgError.jpg");
+  background-size: cover;
+  text-align: center;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.main {
+  box-shadow: -5px 20px 30px 8px rgba(0, 0, 0, 0.45);
+  background: rgba(87, 175, 150, 0.29);
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 50px;
+}
+.errorText h2 {
+  font-size: 10em;
+  color: #fff;
+  line-height: 1;
+  letter-spacing: 2px;
+  font-weight: 300;
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.6);
+}
+.errorText h3 {
+  font-size: 2em;
+  color: #fff;
+  letter-spacing: 3px;
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.6);
+}
+.errorText p {
+  font-size: 0.9em;
+  color: #fff;
+  text-transform: capitalize;
+  letter-spacing: 5px;
+  margin: 1em 0 4em;
+  font-weight: 300;
+}
+.errorText a {
+  font-size: 1em;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 0.7em 1.8em;
+  letter-spacing: 2px;
+  display: inline-block;
+  background: #e91e63;
+}
+.errorText a:hover {
+  text-decoration: none;
+  color: #fff;
+}

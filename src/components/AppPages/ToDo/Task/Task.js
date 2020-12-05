@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
 import PropTypes from "prop-types";
 import RemoveOneTaskModal from "../RemoveOneTaskModal/RemoveOneTaskModal";
-import { formatDate } from "../../../helpers/utils";
+import { formatDate } from "./../../../../helpers/utils";
 
 class Task extends PureComponent {
   state = {

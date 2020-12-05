@@ -286,11 +286,6 @@ class ToDo extends PureComponent {
       <>
         <div>
           <Container>
-            <Row>
-              <Col>
-                <h1 className={styles.title}>My Tasks</h1>
-              </Col>
-            </Row>
             <Row className="justify-content-center text-center">
               <Col lg={6} xs={12} sm={10} md={8}>
                 <Button
