@@ -18,18 +18,21 @@ export default function Header() {
           <Nav className="mr-auto">
             <NavLink
               to="/"
+              exact
               activeClassName={styles.activePage}
               className={styles.menuLinks}>
               Home
             </NavLink>
             <NavLink
               to="/about"
+              exact
               activeClassName={styles.activePage}
               className={styles.menuLinks}>
               About us
             </NavLink>
             <NavLink
               to="/contact"
+              exact
               activeClassName={styles.activePage}
               className={styles.menuLinks}>
               Contact

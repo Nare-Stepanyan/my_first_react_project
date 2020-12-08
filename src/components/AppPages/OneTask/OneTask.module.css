@@ -1,0 +1,13 @@
+.date {
+  font-size: 12px !important;
+  color: #061036;
+  font-weight: bold;
+}
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.buttons button {
+  margin: 0 10px;
+}

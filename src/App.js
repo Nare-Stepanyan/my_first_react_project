@@ -17,7 +17,8 @@ function App() {
         <Route path="/" exact component={ToDo} />
         <Route path="/about" exact component={About} />
         <Route path="/contact" exact component={Contact} />
-        <Route path="./task/:id" exact component={OneTask} />
+        <Route path="/task" exact component={ToDo} />
+        <Route path="/task/:id" exact component={OneTask} />
         <Route path="/404" exact component={NotFound} />
         <Redirect to="/404" />
       </Switch>
