@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import styles from "./InputTask.module.css";
 import { Button, FormControl, Modal } from "react-bootstrap";
 import PropTypes from "prop-types";
@@ -6,6 +6,11 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 function InputTask(props) {
+  const titleRef = useRef(null);
+
+  useEffect(() => {
+    titleRef.current.focus();
+  }, []);
   return (
     <Modal show={true} onHide={props.onClose} centered>
       <Modal.Header closeButton>
@@ -15,6 +20,7 @@ function InputTask(props) {
         <FormControl
           placeholder="Title"
           name="title"
+          ref={titleRef}
           onChange={props.handleChange}
           onKeyDown={props.handleKeyDown}
           title={props.title}
