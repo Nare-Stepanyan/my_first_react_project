@@ -301,7 +301,7 @@ class ToDo extends PureComponent {
               <Col xs={2} className="mt-3">
                 {!!tasks.length && (
                   <Button
-                    variant="danger"
+                    variant="outline-danger"
                     onClick={this.openConfirmSelected}
                     disabled={!selectedTasks.size}>
                     Remove Selected
@@ -311,7 +311,7 @@ class ToDo extends PureComponent {
               <Col xs={2} className="mt-3">
                 {!!tasks.length && (
                   <Button
-                    variant="danger"
+                    variant="outline-danger"
                     onClick={this.openConfirmRemoveAll}
                     disabled={selectedTasks.size}>
                     Remove All
