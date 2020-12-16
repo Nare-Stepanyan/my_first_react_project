@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react";
+import React, { PureComponent, createRef } from "react";
 import styles from "./EditTaskModal.module.css";
 import { Button, FormControl, Modal } from "react-bootstrap";
 import PropTypes from "prop-types";
@@ -13,6 +13,10 @@ class EditTaskModal extends PureComponent {
       ...props.task,
       date: date ? new Date(date) : new Date(),
     };
+    this.titleRef = createRef();
+  }
+  componentDidMount() {
+    this.titleRef.current.focus();
   }
 
   handleChange = (event) => {
@@ -53,6 +57,7 @@ class EditTaskModal extends PureComponent {
               placeholder="Title"
               name="title"
               value={title}
+              ref={this.titleRef}
               onChange={this.handleChange}
               onKeyDown={props.handleKeyDown}
               title={title}
