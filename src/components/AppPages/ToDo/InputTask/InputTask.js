@@ -59,6 +59,6 @@ InputTask.propTypes = {
   handleChange: PropTypes.func.isRequired,
   handleKeyDown: PropTypes.func.isRequired,
   handleDate: PropTypes.func.isRequired,
-  creationDate: PropTypes.string.isRequired,
+  creationDate: PropTypes.object.isRequired,
 };
 export default InputTask;
