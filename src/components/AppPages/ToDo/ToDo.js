@@ -6,10 +6,11 @@ import { Button, Container, Row, Col } from "react-bootstrap";
 import Confirm from "./Confirm/Confirm";
 import EditTaskModal from "./EditTaskModal/EditTaskModal";
 import RemoveSelectedModal from "./RemoveSelectedModal/RemoveSelectedModal";
+import { connect } from "react-redux";
+import { getTasks } from "./../../../store/actions";
 
 class ToDo extends PureComponent {
   state = {
-    tasks: [],
     title: "",
     description: "",
     date: new Date(),
@@ -22,23 +23,7 @@ class ToDo extends PureComponent {
   };
 
   componentDidMount() {
-    const url = "http://localhost:3001/task";
-    fetch(url, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((response) => {
-        if (response.error) {
-          throw response.error;
-        }
-        this.setState({
-          tasks: response,
-        });
-      })
-      .catch((error) => {});
+    this.props.getTasks();
   }
 
   handleDate = (date) => {
@@ -260,14 +245,13 @@ class ToDo extends PureComponent {
       title,
       description,
       date,
-      tasks,
       selectedTasks,
       removeAllConfirm,
       removeSelected,
       editTask,
       newTaskModal,
     } = this.state;
-
+    const { tasks } = this.props;
     const newTaskList = tasks.map((el, i) => {
       return (
         <Col key={el._id} xs={12} sm={6} md={4} lg={3} xl={2}>
@@ -359,5 +343,12 @@ class ToDo extends PureComponent {
     );
   }
 }
-
-export default ToDo;
+const mapStateToProps = (state) => {
+  return {
+    tasks: state.tasks,
+  };
+};
+const mapDispatchToProps = {
+  getTasks: getTasks,
+};
+export default connect(mapStateToProps, mapDispatchToProps)(ToDo);
