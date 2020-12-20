@@ -1,37 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-//import App from "./App";
-import Counter from "./components/AppPages/Counter/Counter";
+import App from "./App";
+// import Counter from "./components/AppPages/Counter/Counter";
 import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
-import { createStore } from "redux";
-
-const defaultState = {
-  count: 0,
-};
-const reducer = (state = defaultState, action) => {
-  switch (action.type) {
-    case "CHANGE_VALUE":
-      return {
-        count: state.count + action.value,
-      };
-    case "RESET_VALUE":
-      return { count: 0 };
-
-    default:
-      return state;
-  }
-};
-const store = createStore(reducer);
+import { store } from "./store/store";
 
 ReactDOM.render(
   <Provider store={store}>
     <React.StrictMode>
       <BrowserRouter>
-        {/* <App /> */}
-        <Counter />
+        <App />
+        {/* <Counter /> */}
       </BrowserRouter>
     </React.StrictMode>
   </Provider>,
