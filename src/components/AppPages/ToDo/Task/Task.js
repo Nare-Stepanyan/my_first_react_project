@@ -7,12 +7,15 @@ import PropTypes from "prop-types";
 import RemoveOneTaskModal from "../RemoveOneTaskModal/RemoveOneTaskModal";
 import { formatDate } from "./../../../../helpers/utils";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { removeTask } from "./../../../../store/actions";
 
 class Task extends PureComponent {
   state = {
     checked: false,
     showConfirm: false,
   };
+
   handleCheck = () => {
     this.setState({
       checked: !this.state.checked,
@@ -73,9 +76,11 @@ class Task extends PureComponent {
 
 Task.propTypes = {
   newTask: PropTypes.object.isRequired,
-  removeTask: PropTypes.func.isRequired,
   onCheck: PropTypes.func.isRequired,
   disabled: PropTypes.bool.isRequired,
   onEdit: PropTypes.func.isRequired,
 };
-export default Task;
+const mapDispatchToProps = {
+  removeTask,
+};
+export default connect(null, mapDispatchToProps)(Task);
