@@ -60,6 +60,40 @@ export function saveTask(editedTask) {
   };
 }
 
+export function saveOneTask(editedTask) {
+  return (dispatch) => {
+    dispatch({ type: actionTypes.LOADING });
+    const url = `http://localhost:3001/task/${editedTask._id}`;
+    request(url, "PUT", editedTask)
+      .then((res) => {
+        dispatch({
+          type: actionTypes.SAVE_ONE_TASK_SUCCESS,
+          task: res,
+        });
+      })
+      .catch((err) => {
+        dispatch({ type: actionTypes.ERROR, error: err.message });
+      });
+  };
+}
+
+export function openOneTask(taskId) {
+  return (dispatch) => {
+    dispatch({ type: actionTypes.LOADING });
+    const url = `http://localhost:3001/task/${taskId}`;
+    request(url)
+      .then((res) => {
+        dispatch({
+          type: actionTypes.OPEN_ONE_TASK_SUCCESS,
+          task: res,
+        });
+      })
+      .catch((err) => {
+        dispatch({ type: actionTypes.ERROR, error: err.message });
+      });
+  };
+}
+
 export function removeAll(body) {
   return (dispatch) => {
     dispatch({ type: actionTypes.LOADING });
@@ -85,6 +119,24 @@ export function removeSelected(selectedTasks) {
           type: actionTypes.REMOVE_SELECTED_SUCCESS,
           selectedTasks,
         });
+      })
+      .catch((err) => {
+        dispatch({ type: actionTypes.ERROR, error: err.message });
+      });
+  };
+}
+
+export function removeOneTask(id, path) {
+  console.log(path);
+  return (dispatch) => {
+    dispatch({ type: actionTypes.LOADING });
+    const url = `http://localhost:3001/task/${id}`;
+    request(url, "DELETE")
+      .then((res) => {
+        dispatch({
+          type: actionTypes.REMOVE_ONE_TASK_SUCCESS,
+        });
+        path("./");
       })
       .catch((err) => {
         dispatch({ type: actionTypes.ERROR, error: err.message });
