@@ -5,6 +5,7 @@ import InputTask from "./InputTask/InputTask";
 import { Button, Container, Row, Col } from "react-bootstrap";
 import Confirm from "./Confirm/Confirm";
 import EditTaskModal from "./EditTaskModal/EditTaskModal";
+import Search from "./../../Search/Search";
 import RemoveSelectedModal from "./RemoveSelectedModal/RemoveSelectedModal";
 import { connect } from "react-redux";
 import {
@@ -176,6 +177,7 @@ class ToDo extends PureComponent {
       <>
         <div>
           <Container>
+            <Search />
             <Row className="justify-content-center text-center">
               <Col lg={6} xs={12} sm={10} md={8}>
                 <Button
