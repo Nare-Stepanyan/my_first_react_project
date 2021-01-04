@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import DatePicker from "react-datepicker";
+import styles from "./Search.module.css";
 import "react-datepicker/dist/react-datepicker.css";
 import {
   Navbar,
@@ -111,15 +112,18 @@ function Search(props) {
   return (
     <div>
       <Navbar bg="light" expand="lg">
-        <Navbar.Brand href="#home">Search Sort Filter</Navbar.Brand>
+        <Navbar.Brand>
+          <span className={styles.sortFilter}>Sort and Filter:</span>
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto">
+          <Nav>
             <NavDropdown title={status.value ? status.label : "Status"}>
               {statusOptions.map((item, index) => {
                 return (
                   <NavDropdown.Item
                     key={index}
+                    className={styles.input}
                     onClick={() => setStatus(item)}
                     active={status.value === item.value}>
                     {item.label}
@@ -127,6 +131,8 @@ function Search(props) {
                 );
               })}
             </NavDropdown>
+          </Nav>
+          <Nav>
             <NavDropdown title={sort.value ? sort.label : "Sort"}>
               {sortOptions.map((item, index) => {
                 return (
@@ -140,21 +146,46 @@ function Search(props) {
               })}
             </NavDropdown>
           </Nav>
-          <Form inline>
-            <FormControl
-              type="text"
-              placeholder="Search"
-              className="mr-sm-2"
-              value={search}
-              onChange={(event) => setSearch(event.target.value)}
-            />
-            <Button variant="outline-success" onClick={handleSubmit}>
-              Search
-            </Button>
-          </Form>
+
+          {dateOptions.map((item, index) => {
+            return (
+              <div key={index} className={styles.nav}>
+                <span className={styles.label}>{item.label}</span>
+                <span>
+                  <DatePicker
+                    selected={dates[item.value]}
+                    onChange={(date) => {
+                      setDates({
+                        ...dates,
+                        [item.value]: date,
+                      });
+                    }}
+                  />
+                </span>
+              </div>
+            );
+          })}
         </Navbar.Collapse>
       </Navbar>
-      <div>
+      <div className={styles.sortNav}>
+        <Form inline>
+          <FormControl
+            type="text"
+            placeholder="Search"
+            className="mr-sm-2 mb-2"
+            value={search}
+            onChange={(event) => setSearch(event.target.value)}
+          />
+          <Button
+            variant="outline-success"
+            className="mr-sm-2 mb-2"
+            onClick={handleSubmit}>
+            Search
+          </Button>
+        </Form>
+      </div>
+
+      {/* <div>
         {dateOptions.map((item, index) => {
           return (
             <div key={index}>
@@ -171,7 +202,7 @@ function Search(props) {
             </div>
           );
         })}
-      </div>
+      </div> */}
     </div>
   );
 }

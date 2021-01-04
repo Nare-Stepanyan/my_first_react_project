@@ -27,6 +27,7 @@ class ToDo extends PureComponent {
     removeAllConfirm: false,
     removeSelected: false,
     newTaskModal: false,
+    showSearch: false,
   };
 
   componentDidMount() {
@@ -36,6 +37,15 @@ class ToDo extends PureComponent {
     if (!prevProps.addTaskSuccess && this.props.addTaskSuccess) {
       this.toggleAddTaskModal();
     }
+    if (this.props.tasks.length > 0) {
+      this.setState({
+        showSearch: true,
+      });
+    } else if (this.props.tasks.length < 1) {
+      this.setState({
+        showSearch: false,
+      });
+    }
   }
 
   handleDate = (date) => {
@@ -43,7 +53,6 @@ class ToDo extends PureComponent {
       date,
     });
   };
-
   handleChange = (event) => {
     const { name, value } = event.target;
     this.setState({
@@ -158,11 +167,12 @@ class ToDo extends PureComponent {
       removeSelected,
       editTask,
       newTaskModal,
+      showSearch,
     } = this.state;
     const { tasks } = this.props;
     const newTaskList = tasks.map((el, i) => {
       return (
-        <Col key={el._id} xs={12} sm={6} md={4} lg={3} xl={2}>
+        <Col key={el._id} xs={12} sm={6} md={4} lg={3} xl={3}>
           <Task
             newTask={el}
             onCheck={this.handleCheck}
@@ -175,42 +185,39 @@ class ToDo extends PureComponent {
 
     return (
       <>
-        <div>
+        <div className={styles.container}>
           <Container>
-            <Search />
-            <Row className="justify-content-center text-center">
-              <Col lg={6} xs={12} sm={10} md={8}>
-                <Button
-                  className={styles.addButton}
-                  onClick={this.toggleAddTaskModal}
-                  disabled={!!selectedTasks.size}>
-                  Add Task
-                </Button>
-              </Col>
-            </Row>
-            <Row>{newTaskList}</Row>
-            <Row className="justify-content-center">
-              <Col xs={2} className="mt-3">
+            {showSearch && <Search />}
+            <div className={styles.buttons}>
+              <Button
+                className={styles.addButton}
+                onClick={this.toggleAddTaskModal}
+                disabled={!!selectedTasks.size}>
+                Add Task
+              </Button>
+              <div className={styles.removeButtons}>
                 {!!tasks.length && (
                   <Button
+                    className={styles.removeButton}
                     variant="outline-danger"
                     onClick={this.openConfirmSelected}
                     disabled={!selectedTasks.size}>
                     Remove Selected
                   </Button>
                 )}
-              </Col>
-              <Col xs={2} className="mt-3">
                 {!!tasks.length && (
                   <Button
+                    className={styles.removeButton}
                     variant="outline-danger"
                     onClick={this.openConfirmRemoveAll}
                     disabled={selectedTasks.size}>
                     Remove All
                   </Button>
                 )}
-              </Col>
-            </Row>
+              </div>
+            </div>
+
+            <Row>{newTaskList}</Row>
           </Container>
         </div>
         {removeAllConfirm && (
