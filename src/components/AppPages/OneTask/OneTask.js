@@ -1,42 +1,39 @@
 import React, { useState, useEffect } from "react";
 import { Card, Button } from "react-bootstrap";
-import Spinner from "./../../Spinner/Spinner";
+//import Spinner from "./../../Spinner/Spinner";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
 import EditTaskModal from "../ToDo/EditTaskModal/EditTaskModal";
 import styles from "./OneTask.module.css";
 import { formatDate } from "./../../../helpers/utils";
+import { connect } from "react-redux";
+import {
+  openOneTask,
+  removeOneTask,
+  saveOneTask,
+} from "./../../../store/actions";
 
-export default function OneTask(props) {
+function OneTask(props) {
   let [openEditModal, setModal] = useState(false);
   let [task, setTask] = useState(null);
 
   useEffect(() => {
-    fetchTask();
+    const taskId = props.match.params.id;
+    props.openOneTask(taskId);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  function fetchTask() {
-    const taskId = props.match.params.id;
-    const url = `http://localhost:3001/task/${taskId}`;
-    return fetch(url, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((response) => {
-        if (response.error) {
-          throw response.error;
-        }
-        openTask(response);
-      })
-      .catch((error) => {});
-  }
 
-  function openTask(res) {
-    setTask(res);
-  }
+  useEffect(() => {
+    if (props.editOneTaskSuccess) {
+      props.openOneTask(props.task._id);
+      toggleEditModal();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.editOneTaskSuccess]);
+
+  useEffect(() => {
+    setTask(props.task);
+  }, [props.task]);
 
   function toggleEditModal() {
     setModal(!openEditModal);
@@ -44,42 +41,12 @@ export default function OneTask(props) {
 
   function onRemove() {
     const id = task._id;
-    const url = `http://localhost:3001/task/${id}`;
-    return fetch(url, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((response) => {
-        if (response.error) {
-          throw response.error;
-        }
-        props.history.push("/");
-      })
-      .catch((error) => {});
+    const path = props.history.push;
+    props.removeOneTask(id, path);
   }
+
   function saveTask(editedTask) {
-    const url = `http://localhost:3001/task/${editedTask._id}`;
-    const body = JSON.stringify(editedTask);
-    return fetch(url, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body,
-    })
-      .then((res) => res.json())
-      .then((response) => {
-        if (response.error) {
-          throw response.error;
-        } else {
-          openTask(response);
-          toggleEditModal();
-        }
-      })
-      .catch((error) => {});
+    props.saveOneTask(editedTask);
   }
 
   return (
@@ -113,7 +80,7 @@ export default function OneTask(props) {
           </Card.Footer>
         </Card>
       ) : (
-        <Spinner />
+        <div>Task is not found</div>
       )}
 
       {openEditModal && (
@@ -126,3 +93,18 @@ export default function OneTask(props) {
     </>
   );
 }
+
+const mapStatetoProps = (state) => {
+  return {
+    task: state.task,
+    successMessage: state.successMessage,
+    editOneTaskSuccess: state.editOneTaskSuccess,
+  };
+};
+const mapDispatchToProps = {
+  openOneTask,
+  removeOneTask,
+  saveOneTask,
+};
+
+export default connect(mapStatetoProps, mapDispatchToProps)(OneTask);

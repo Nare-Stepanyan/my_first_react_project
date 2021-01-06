@@ -15,7 +15,6 @@ import Spinner from "./components/Spinner/Spinner";
 
 function App(props) {
   const { errorMessage, loading, successMessage } = props;
-  console.log("app", props);
   if (errorMessage) {
     toast.error(errorMessage);
   }

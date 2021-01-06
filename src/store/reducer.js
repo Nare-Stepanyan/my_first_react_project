@@ -5,7 +5,9 @@ const defaultState = {
   errorMessage: null,
   successMessage: null,
   addTaskSuccess: false,
+  editOneTaskSuccess: false,
   loading: false,
+  task: null,
 };
 export const reducer = (state = defaultState, action) => {
   switch (action.type) {
@@ -22,6 +24,7 @@ export const reducer = (state = defaultState, action) => {
         successMessage: null,
         errorMessage: null,
         addTaskSuccess: false,
+        editOneTaskSuccess: false,
       };
     case actionTypes.GET_TASKS_SUCCESS:
       return {
@@ -78,6 +81,31 @@ export const reducer = (state = defaultState, action) => {
         tasks,
         loading: false,
         successMessage: "Selected tasks deleted successfully!!!",
+      };
+    }
+    case actionTypes.OPEN_ONE_TASK_SUCCESS: {
+      const task = action.task;
+      return {
+        ...state,
+        task,
+        loading: false,
+      };
+    }
+    case actionTypes.REMOVE_ONE_TASK_SUCCESS: {
+      return {
+        ...state,
+        loading: false,
+      };
+    }
+    case actionTypes.SAVE_ONE_TASK_SUCCESS: {
+      //const task = action.task;
+      const task = action.task;
+      return {
+        ...state,
+        task,
+        editOneTaskSuccess: true,
+        loading: false,
+        successMessage: "Task edited successfully!!!",
       };
     }
     default:
