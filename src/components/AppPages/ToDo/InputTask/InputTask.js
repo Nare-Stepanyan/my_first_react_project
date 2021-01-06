@@ -61,4 +61,5 @@ InputTask.propTypes = {
   handleDate: PropTypes.func.isRequired,
   creationDate: PropTypes.object.isRequired,
 };
+
 export default InputTask;
