@@ -98,7 +98,6 @@ export const reducer = (state = defaultState, action) => {
       };
     }
     case actionTypes.SAVE_ONE_TASK_SUCCESS: {
-      //const task = action.task;
       const task = action.task;
       return {
         ...state,

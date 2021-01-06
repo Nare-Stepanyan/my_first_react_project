@@ -39,14 +39,15 @@ class Task extends PureComponent {
             <Link to={`/task/${newTask._id}`}>{newTask.title}</Link>
           </Card.Title>
           <Card.Text className={styles.task}>
-            {!!newTask.description && `Description: ${newTask.description}`}
-          </Card.Text>
-          <Card.Text className={styles.date}>
-            Date: {formatDate(newTask.date)}
+            {!!newTask.description && newTask.description}
           </Card.Text>
           <Card.Text className={styles.date}>
             Created at: {formatDate(newTask.created_at)}
           </Card.Text>
+          <Card.Text className={styles.deadline}>
+            Deadline: {formatDate(newTask.date)}
+          </Card.Text>
+
           <div className={styles.buttons}>
             <Button
               variant="warning"

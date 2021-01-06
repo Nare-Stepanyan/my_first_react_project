@@ -12,14 +12,23 @@
 .selected {
   border: 2px solid #fff !important;
 }
-.title {
+.title a {
   font-size: 24px !important;
-  color: #061036;
+  color: #061036 !important;
+
+  text-decoration: none;
+}
+.title {
   text-align: center;
 }
 .date {
   font-size: 12px !important;
   color: #061036;
+}
+.deadline {
+  font-size: 12px !important;
+  color: #061036;
+  font-weight: bold;
 }
 .buttons {
   display: flex;

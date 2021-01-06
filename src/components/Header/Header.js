@@ -7,7 +7,7 @@ import styles from "./Header.module.css";
 export default function Header() {
   return (
     <>
-      <Navbar bg="light" expand="lg">
+      <Navbar bg="light" expand="lg" className={styles.menu}>
         <Navbar.Brand>
           <Link to="/">
             <img src={logo} alt="logo" className={styles.logo} />

@@ -25,7 +25,6 @@ function OneTask(props) {
 
   useEffect(() => {
     if (props.editOneTaskSuccess) {
-      props.openOneTask(props.task._id);
       toggleEditModal();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

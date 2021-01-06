@@ -1,11 +1,23 @@
 import request from "./../helpers/request";
 import * as actionTypes from "./actionTypes";
 
-export function getTasks() {
+export function getTasks(data = {}) {
+  const url = "http://localhost:3001/task";
+
+  let query = "?";
+
+  for (let key in data) {
+    let value = data[key];
+    query = `${query}${key}=${value}&`;
+  }
+
+  if (query === "?") {
+    query = "";
+  }
+
   return (dispatch) => {
     dispatch({ type: actionTypes.LOADING });
-    const url = "http://localhost:3001/task";
-    request(url)
+    request(url + query)
       .then((res) => {
         dispatch({ type: actionTypes.GET_TASKS_SUCCESS, tasks: res });
       })

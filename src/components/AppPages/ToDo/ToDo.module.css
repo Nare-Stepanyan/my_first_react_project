@@ -3,3 +3,28 @@
   color: #1d75ba !important;
   font-size: 20px !important;
 }
+.removeButton {
+  font-size: 14px !important;
+}
+.removeButtons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  flex-wrap: wrap;
+}
+.buttons button {
+  max-width: 200px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  margin-left: 15px;
+}
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
