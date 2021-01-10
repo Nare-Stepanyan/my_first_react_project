@@ -1,8 +1,10 @@
 import request from "./../helpers/request";
 import * as actionTypes from "./actionTypes";
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 export function getTasks(data = {}) {
-  const url = "http://localhost:3001/task";
+  const url = `${apiUrl}/task`;
 
   let query = "?";
 
@@ -30,7 +32,7 @@ export function getTasks(data = {}) {
 export function inputTask(body) {
   return (dispatch) => {
     dispatch({ type: actionTypes.LOADING });
-    const url = "http://localhost:3001/task";
+    const url = `${apiUrl}/task`;
     request(url, "POST", body)
       .then((res) => {
         dispatch({ type: actionTypes.ADD_TASK_SUCCESS, task: res });
@@ -44,7 +46,7 @@ export function inputTask(body) {
 export function removeTask(id) {
   return (dispatch) => {
     dispatch({ type: actionTypes.LOADING });
-    const url = `http://localhost:3001/task/${id}`;
+    const url = `${apiUrl}/task/${id}`;
     request(url, "DELETE")
       .then((res) => {
         dispatch({ type: actionTypes.DELETE_TASK_SUCCESS, id });
@@ -58,7 +60,7 @@ export function removeTask(id) {
 export function saveTask(editedTask) {
   return (dispatch) => {
     dispatch({ type: actionTypes.LOADING });
-    const url = `http://localhost:3001/task/${editedTask._id}`;
+    const url = `${apiUrl}/task/${editedTask._id}`;
     request(url, "PUT", editedTask)
       .then((res) => {
         dispatch({
@@ -72,10 +74,28 @@ export function saveTask(editedTask) {
   };
 }
 
+export function changeStatus(id, status, from) {
+  return (dispatch) => {
+    dispatch({ type: actionTypes.LOADING });
+    const url = `${apiUrl}/task/${id}`;
+    request(url, "PUT", status)
+      .then((res) => {
+        dispatch({
+          type: actionTypes.CHANGE_STATUS_SUCCESS,
+          task: res,
+          from,
+        });
+      })
+      .catch((err) => {
+        dispatch({ type: actionTypes.ERROR, error: err.message });
+      });
+  };
+}
+
 export function saveOneTask(editedTask) {
   return (dispatch) => {
     dispatch({ type: actionTypes.LOADING });
-    const url = `http://localhost:3001/task/${editedTask._id}`;
+    const url = `${apiUrl}/task/${editedTask._id}`;
     request(url, "PUT", editedTask)
       .then((res) => {
         dispatch({
@@ -92,7 +112,7 @@ export function saveOneTask(editedTask) {
 export function openOneTask(taskId) {
   return (dispatch) => {
     dispatch({ type: actionTypes.LOADING });
-    const url = `http://localhost:3001/task/${taskId}`;
+    const url = `${apiUrl}/task/${taskId}`;
     request(url)
       .then((res) => {
         dispatch({
@@ -109,7 +129,7 @@ export function openOneTask(taskId) {
 export function removeAll(body) {
   return (dispatch) => {
     dispatch({ type: actionTypes.LOADING });
-    const url = "http://localhost:3001/task";
+    const url = `${apiUrl}/task`;
     request(url, "PATCH", body)
       .then((res) => {
         dispatch({
@@ -124,7 +144,7 @@ export function removeAll(body) {
 export function removeSelected(selectedTasks) {
   return (dispatch) => {
     dispatch({ type: actionTypes.LOADING });
-    const url = "http://localhost:3001/task";
+    const url = `${apiUrl}/task`;
     request(url, "PATCH", selectedTasks)
       .then((res) => {
         dispatch({
@@ -139,10 +159,9 @@ export function removeSelected(selectedTasks) {
 }
 
 export function removeOneTask(id, path) {
-  console.log(path);
   return (dispatch) => {
     dispatch({ type: actionTypes.LOADING });
-    const url = `http://localhost:3001/task/${id}`;
+    const url = `${apiUrl}/task/${id}`;
     request(url, "DELETE")
       .then((res) => {
         dispatch({
