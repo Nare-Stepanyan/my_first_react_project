@@ -61,7 +61,7 @@ class Task extends PureComponent {
           <div className={styles.buttons}>
             {newTask.status === "active" ? (
               <Button
-                variant="warning"
+                variant="success"
                 disabled={disabled}
                 onClick={() =>
                   this.props.changeStatus(
@@ -70,11 +70,11 @@ class Task extends PureComponent {
                     "tasks"
                   )
                 }>
-                <FontAwesomeIcon icon={faHistory} />
+                <FontAwesomeIcon icon={faCheck} />
               </Button>
             ) : (
               <Button
-                variant="success"
+                variant="warning"
                 disabled={disabled}
                 onClick={() =>
                   this.props.changeStatus(
@@ -83,7 +83,7 @@ class Task extends PureComponent {
                     "tasks"
                   )
                 }>
-                <FontAwesomeIcon icon={faCheck} />
+                <FontAwesomeIcon icon={faHistory} />
               </Button>
             )}
             <Button

@@ -68,19 +68,19 @@ function OneTask(props) {
             <div className={styles.buttons}>
               {task.status === "active" ? (
                 <Button
-                  variant="warning"
+                  variant="success"
                   onClick={() =>
                     props.changeStatus(task._id, { status: "done" }, "single")
                   }>
-                  <FontAwesomeIcon icon={faHistory} />
+                  <FontAwesomeIcon icon={faCheck} />
                 </Button>
               ) : (
                 <Button
-                  variant="success"
+                  variant="warning"
                   onClick={() =>
                     props.changeStatus(task._id, { status: "active" }, "single")
                   }>
-                  <FontAwesomeIcon icon={faCheck} />
+                  <FontAwesomeIcon icon={faHistory} />
                 </Button>
               )}
 
