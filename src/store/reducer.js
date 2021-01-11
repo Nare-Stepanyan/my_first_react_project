@@ -1,3 +1,4 @@
+//import { faSleigh } from "@fortawesome/free-solid-svg-icons";
 import * as actionTypes from "./actionTypes";
 
 const defaultState = {
@@ -63,6 +64,34 @@ export const reducer = (state = defaultState, action) => {
         successMessage: "Task edited successfully!!!",
       };
     }
+    case actionTypes.CHANGE_STATUS_SUCCESS: {
+      let message;
+      if (action.task.status === "done") {
+        message = "Congratulations, task completed!!!";
+      } else message = "Task is active now!";
+      if (action.from === "single") {
+        return {
+          ...state,
+          task: action.task,
+          loading: false,
+          successMessage: message,
+        };
+      } else {
+        const tasks = [...state.tasks];
+        const changedStatusTask = state.tasks.findIndex(
+          (task, i) => task._id === action.task._id
+        );
+        tasks[changedStatusTask] = action.task;
+
+        return {
+          ...state,
+          tasks: tasks,
+          loading: false,
+          successMessage: message,
+        };
+      }
+    }
+
     case actionTypes.REMOVE_ALL_SUCCESS: {
       return {
         ...state,
@@ -107,6 +136,7 @@ export const reducer = (state = defaultState, action) => {
         successMessage: "Task edited successfully!!!",
       };
     }
+
     default:
       return state;
   }

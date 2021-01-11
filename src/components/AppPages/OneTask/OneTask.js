@@ -2,7 +2,12 @@ import React, { useState, useEffect } from "react";
 import { Card, Button } from "react-bootstrap";
 //import Spinner from "./../../Spinner/Spinner";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
+import {
+  faTrash,
+  faEdit,
+  faCheck,
+  faHistory,
+} from "@fortawesome/free-solid-svg-icons";
 import EditTaskModal from "../ToDo/EditTaskModal/EditTaskModal";
 import styles from "./OneTask.module.css";
 import { formatDate } from "./../../../helpers/utils";
@@ -11,6 +16,7 @@ import {
   openOneTask,
   removeOneTask,
   saveOneTask,
+  changeStatus,
 } from "./../../../store/actions";
 
 function OneTask(props) {
@@ -57,25 +63,43 @@ function OneTask(props) {
             <Card.Title>{task.title}</Card.Title>
             <Card.Text>{!!task.description && task.description}</Card.Text>
             <Card.Text className={styles.date}>
-              Date: {formatDate(task.date)}
+              Created at: {formatDate(task.created_at)}
             </Card.Text>
             <div className={styles.buttons}>
+              {task.status === "active" ? (
+                <Button
+                  variant="success"
+                  onClick={() =>
+                    props.changeStatus(task._id, { status: "done" }, "single")
+                  }>
+                  <FontAwesomeIcon icon={faCheck} />
+                </Button>
+              ) : (
+                <Button
+                  variant="warning"
+                  onClick={() =>
+                    props.changeStatus(task._id, { status: "active" }, "single")
+                  }>
+                  <FontAwesomeIcon icon={faHistory} />
+                </Button>
+              )}
+
+              <Button
+                //className={styles.cardButton}
+                variant="info"
+                onClick={toggleEditModal}>
+                <FontAwesomeIcon icon={faEdit} />
+              </Button>
               <Button
                 variant="danger"
                 // className={styles.cardButton}
                 onClick={onRemove}>
                 <FontAwesomeIcon icon={faTrash} />
               </Button>
-              <Button
-                //className={styles.cardButton}
-                variant="warning"
-                onClick={toggleEditModal}>
-                <FontAwesomeIcon icon={faEdit} />
-              </Button>
             </div>
           </Card.Body>
           <Card.Footer className={styles.date}>
-            Created at: {formatDate(task.created_at)}
+            Deadline: {formatDate(task.date)}
           </Card.Footer>
         </Card>
       ) : (
@@ -104,6 +128,7 @@ const mapDispatchToProps = {
   openOneTask,
   removeOneTask,
   saveOneTask,
+  changeStatus,
 };
 
 export default connect(mapStatetoProps, mapDispatchToProps)(OneTask);
