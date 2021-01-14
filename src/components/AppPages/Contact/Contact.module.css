@@ -1,0 +1,32 @@
+form span {
+  color: red;
+  font-weight: bold;
+}
+
+form {
+  max-width: 600px;
+  margin: 30px auto;
+}
+.sendButton {
+  width: 240px;
+  border: 1px solid #1d75ba;
+  margin: 20px auto !important;
+  color: #1d75ba;
+}
+.label {
+  color: #1d75ba;
+}
+.sendButton:hover {
+  color: #1d75ba;
+}
+.sendButtonActive {
+  width: 240px;
+  border: 1px solid #1d75ba;
+  margin: 20px auto !important;
+  color: #1d75ba;
+}
+.sendButtonActive:hover {
+  color: #fff;
+  background-color: #1d75ba;
+  box-shadow: 5px 5px 5px grey;
+}
