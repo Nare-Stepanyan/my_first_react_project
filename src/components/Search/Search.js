@@ -110,7 +110,7 @@ function Search(props) {
     props.getTasks(data);
   };
   return (
-    <div>
+    <div className={styles.search}>
       <Navbar bg="light" expand="lg">
         <Navbar.Brand>
           <span className={styles.sortFilter}>Sort and Filter:</span>
@@ -184,25 +184,6 @@ function Search(props) {
           </Button>
         </Form>
       </div>
-
-      {/* <div>
-        {dateOptions.map((item, index) => {
-          return (
-            <div key={index}>
-              <span>{item.label} </span>
-              <DatePicker
-                selected={dates[item.value]}
-                onChange={(date) => {
-                  setDates({
-                    ...dates,
-                    [item.value]: date,
-                  });
-                }}
-              />
-            </div>
-          );
-        })}
-      </div> */}
     </div>
   );
 }

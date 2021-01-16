@@ -25,5 +25,8 @@
 }
 .sortFilter {
   font-size: 24px;
-  color: #28a745;
+  color: #d74a34;
+}
+.search {
+  margin-top: 10px;
 }
