@@ -1,4 +1,3 @@
-//import { faSleigh } from "@fortawesome/free-solid-svg-icons";
 import * as actionTypes from "./actionTypes";
 
 const defaultState = {
@@ -91,7 +90,6 @@ export const reducer = (state = defaultState, action) => {
         };
       }
     }
-
     case actionTypes.REMOVE_ALL_SUCCESS: {
       return {
         ...state,
@@ -136,7 +134,13 @@ export const reducer = (state = defaultState, action) => {
         successMessage: "Task edited successfully!!!",
       };
     }
-
+    case actionTypes.SEND_FORM_MESSAGE_SUCCESS: {
+      return {
+        ...state,
+        loading: false,
+        successMessage: "Message sent successfully!!!",
+      };
+    }
     default:
       return state;
   }

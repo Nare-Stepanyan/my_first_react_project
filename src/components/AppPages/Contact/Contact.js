@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Contact.module.css";
 import { Button, Form } from "react-bootstrap";
 import { connect } from "react-redux";
+import { sendFormMessage } from "../../../store/actions";
 
 class Contact extends React.PureComponent {
   state = {
@@ -29,24 +30,27 @@ class Contact extends React.PureComponent {
     }
   };
 
-  handleClick = () => {
+  handleClick = (e) => {
+    e.preventDefault();
     const { name, email, message } = this.state;
+    const { sendFormMessage } = this.props;
     if (!name || !email || !message) {
       this.setState({
         formFilled: true,
       });
+      return;
     }
     const formMessage = {
       name,
       email,
       message,
     };
-
-    // this.setState({
-    //   name: "",
-    //   email: "",
-    //   message: "",
-    // });
+    this.setState({
+      name: "",
+      email: "",
+      message: "",
+    });
+    sendFormMessage(formMessage);
   };
 
   render() {
@@ -113,5 +117,7 @@ class Contact extends React.PureComponent {
     );
   }
 }
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+  sendFormMessage,
+};
 export default connect(null, mapDispatchToProps)(Contact);

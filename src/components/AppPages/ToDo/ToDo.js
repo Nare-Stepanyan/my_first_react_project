@@ -223,7 +223,7 @@ class ToDo extends PureComponent {
         </div>
         {!tasks.length && (
           <div className={styles.img}>
-            <img src={image} alt="image" className={styles.main} />
+            <img src={image} alt="task manager" className={styles.main} />
           </div>
         )}
         {removeAllConfirm && (
