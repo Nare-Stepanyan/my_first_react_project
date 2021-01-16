@@ -15,6 +15,7 @@ import {
   removeAll,
   removeSelected,
 } from "./../../../store/actions";
+import image from "./../../../assets/images/main.png";
 
 class ToDo extends PureComponent {
   state = {
@@ -220,6 +221,11 @@ class ToDo extends PureComponent {
             <Row>{newTaskList}</Row>
           </Container>
         </div>
+        {!tasks.length && (
+          <div className={styles.img}>
+            <img src={image} alt="image" className={styles.main} />
+          </div>
+        )}
         {removeAllConfirm && (
           <Confirm
             removeAll={this.removeAll}

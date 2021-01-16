@@ -28,3 +28,9 @@
   max-width: 1400px;
   margin: 0 auto;
 }
+.main {
+  max-width: 600px;
+}
+.img {
+  text-align: center;
+}

@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./Contact.module.css";
 import { Button, Form } from "react-bootstrap";
+import { connect } from "react-redux";
 
 class Contact extends React.PureComponent {
   state = {
@@ -8,6 +9,15 @@ class Contact extends React.PureComponent {
     name: "",
     email: "",
     message: "",
+  };
+  handleChange = (event) => {
+    const { name, value } = event.target;
+    this.setState(
+      {
+        [name]: value,
+      },
+      this.checkDatas()
+    );
   };
 
   checkDatas = () => {
@@ -18,8 +28,29 @@ class Contact extends React.PureComponent {
       });
     }
   };
+
+  handleClick = () => {
+    const { name, email, message } = this.state;
+    if (!name || !email || !message) {
+      this.setState({
+        formFilled: true,
+      });
+    }
+    const formMessage = {
+      name,
+      email,
+      message,
+    };
+
+    // this.setState({
+    //   name: "",
+    //   email: "",
+    //   message: "",
+    // });
+  };
+
   render() {
-    const { formFilled } = this.state;
+    const { formFilled, name, email, message } = this.state;
     return (
       <>
         <Form>
@@ -27,25 +58,42 @@ class Contact extends React.PureComponent {
             <Form.Label className={styles.label}>
               Name <span>*</span>
             </Form.Label>
-            <Form.Control type="email" placeholder="Input your name" />
+            <Form.Control
+              type="text"
+              placeholder="Input your name"
+              name="name"
+              value={name}
+              onChange={this.handleChange}
+            />
           </Form.Group>
           <Form.Group controlId="exampleForm.ControlInput1">
             <Form.Label className={styles.label}>
               Email address <span>*</span>
             </Form.Label>
-            <Form.Control type="email" placeholder="name@example.com" />
+            <Form.Control
+              type="text"
+              placeholder="name@example.com"
+              name="email"
+              value={email}
+              onChange={this.handleChange}
+            />
           </Form.Group>
           <Form.Group controlId="exampleForm.ControlTextarea1">
             <Form.Label className={styles.label}>
               Message <span>*</span>
             </Form.Label>
-            <Form.Control as="textarea" rows={3} />
+            <Form.Control
+              as="textarea"
+              rows={3}
+              name="message"
+              value={message}
+              onChange={this.handleChange}
+            />
           </Form.Group>
           <Form.Group className="text-center">
             {formFilled ? (
               <Button
                 variant="custom"
-                type="submit"
                 disabled
                 className={`${styles.sendButton} bg-gradient-info ${styles.btnCustom}`}>
                 Send
@@ -54,6 +102,7 @@ class Contact extends React.PureComponent {
               <Button
                 variant="custom"
                 type="submit"
+                onClick={this.handleClick}
                 className={`${styles.sendButtonActive} bg-gradient-info ${styles.btnCustom}`}>
                 Send
               </Button>
@@ -64,4 +113,5 @@ class Contact extends React.PureComponent {
     );
   }
 }
-export default Contact;
+const mapDispatchToProps = {};
+export default connect(null, mapDispatchToProps)(Contact);

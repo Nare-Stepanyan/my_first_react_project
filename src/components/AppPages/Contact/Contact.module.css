@@ -28,6 +28,7 @@ form {
 }
 .sendButtonActive:hover {
   color: #fff;
-  background-color: #1d75ba;
+  background-color: #d74a34;
+  border: none;
   box-shadow: 5px 5px 5px grey;
 }
