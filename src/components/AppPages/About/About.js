@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./About.module.css";
 import { Link } from "react-router-dom";
+import about from "./../../../assets/images/about.png";
 
 export default function About() {
   return (
@@ -28,13 +29,16 @@ export default function About() {
         . Any opinion will be beneficial. I appreciate your time.
       </p>
       <p className={styles.third}>
-        If you want to look through the source code just check my
+        If you want to look through the source code just check out my
         <Link
           to={{ pathname: "https://github.com/Nare-Stepanyan" }}
           target="_blank">
           <span className={styles.text}> Github</span>.
         </Link>
       </p>
+      <div className={styles.img}>
+        <img src={about} alt="future developer" />
+      </div>
     </div>
   );
 }

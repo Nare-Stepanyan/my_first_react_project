@@ -1,8 +1,7 @@
 import React from "react";
 import { Navbar, Nav } from "react-bootstrap";
 import { Link, NavLink } from "react-router-dom";
-//import logo from "./../../assets/images/toDoLogo.png";
-import main from "./../../assets/images/main.png";
+import logo from "./../../assets/images/logo.png";
 import styles from "./Header.module.css";
 
 export default function Header() {
@@ -11,7 +10,7 @@ export default function Header() {
       <Navbar bg="light" expand="lg" className={styles.menu}>
         <Navbar.Brand>
           <Link to="/">
-            <img src={main} alt="logo" className={styles.logo} />
+            <img src={logo} alt="logo" className={styles.logo} />
           </Link>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
