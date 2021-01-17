@@ -15,17 +15,17 @@
   margin-bottom: 15px;
 }
 .label {
-  color: #d5a465;
+  color: rgba(0, 0, 0, 0.5);
 }
 .label:focus {
-  border: 1px solid #d5a465 !important;
+  border: 1px solid rgba(0, 0, 0, 0.5) !important;
   outline: none;
 }
 .options {
-  color: #d5a465;
+  color: rgba(0, 0, 0, 0.5);
 }
 .options:hover {
-  color: #d5a465;
+  color: rgba(0, 0, 0, 0.5);
 }
 .sortNav {
   display: flex;

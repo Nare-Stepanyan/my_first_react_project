@@ -57,18 +57,32 @@ function OneTask(props) {
   return (
     <>
       {!!task ? (
-        <Card className="text-center">
-          <Card.Header>{`Status: ${task.status}`}</Card.Header>
+        <Card className={`${styles.card} text-center`}>
+          <Card.Header
+            style={{
+              background: task.status === "done" ? "#d5a465" : "#11b5d7",
+            }}>
+            <Card.Title className={styles.title}>{task.title}</Card.Title>
+          </Card.Header>
           <Card.Body>
-            <Card.Title>{task.title}</Card.Title>
-            <Card.Text>{!!task.description && task.description}</Card.Text>
-            <Card.Text className={styles.date}>
+            <Card.Text className={styles.description}>
+              {!!task.description && task.description}
+            </Card.Text>
+            <Card.Text
+              className={styles.status}
+              style={{
+                background: task.status === "done" ? "#d5a465" : "#11b5d7",
+              }}>
+              {`Status: ${task.status}`}
+            </Card.Text>
+            <Card.Text className={styles.dateCreated}>
               Created at: {formatDate(task.created_at)}
             </Card.Text>
             <div className={styles.buttons}>
               {task.status === "active" ? (
                 <Button
-                  variant="success"
+                  variant="custom"
+                  className={styles.doneBtn}
                   onClick={() =>
                     props.changeStatus(task._id, { status: "done" }, "single")
                   }>
@@ -76,7 +90,8 @@ function OneTask(props) {
                 </Button>
               ) : (
                 <Button
-                  variant="warning"
+                  variant="custom"
+                  className={styles.activeBtn}
                   onClick={() =>
                     props.changeStatus(task._id, { status: "active" }, "single")
                   }>
@@ -85,20 +100,17 @@ function OneTask(props) {
               )}
 
               <Button
-                //className={styles.cardButton}
-                variant="info"
+                className={styles.editBtn}
+                variant="custom"
                 onClick={toggleEditModal}>
                 <FontAwesomeIcon icon={faEdit} />
               </Button>
-              <Button
-                variant="danger"
-                // className={styles.cardButton}
-                onClick={onRemove}>
+              <Button variant="danger" onClick={onRemove}>
                 <FontAwesomeIcon icon={faTrash} />
               </Button>
             </div>
           </Card.Body>
-          <Card.Footer className={styles.date}>
+          <Card.Footer className={styles.dateDeadline}>
             Deadline: {formatDate(task.date)}
           </Card.Footer>
         </Card>

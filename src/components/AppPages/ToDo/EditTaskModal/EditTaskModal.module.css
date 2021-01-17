@@ -8,6 +8,9 @@
   color: #495057;
   padding: 0.375rem 0.75rem;
 }
+.description:focus {
+  border: 1px solid #ced4da;
+}
 .title {
   color: #17a2b8;
 }

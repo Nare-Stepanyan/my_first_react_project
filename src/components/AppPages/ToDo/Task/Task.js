@@ -42,7 +42,7 @@ class Task extends PureComponent {
         <Card.Body>
           <input type="checkbox" onClick={this.handleCheck} />
           <Card.Title
-            style={{ background: newTask.status === "done" ? "#ffb85f" : "" }}
+            style={{ background: newTask.status === "done" ? "#d5a465" : "" }}
             className={styles.title}>
             <Link to={`/task/${newTask._id}`}>
               {shortenString(newTask.title, 30)}

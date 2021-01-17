@@ -86,11 +86,11 @@
 }
 .activeBtn {
   color: #fff;
-  background-color: #ffb85f;
+  background-color: #d5a465;
 }
 
 .activeBtn:hover,
 .activeBtn:focus {
   color: #fff;
-  background-color: #ffb85f;
+  background-color: #d5a465;
 }

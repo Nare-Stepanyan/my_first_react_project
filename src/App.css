@@ -18,3 +18,9 @@ body {
   color: #0f6d89 !important;
   opacity: 1;
 }
+.dropdown-item.active,
+.dropdown-item:active {
+  color: #fff;
+  text-decoration: none;
+  background-color: #d5a465 !important;
+}
