@@ -28,7 +28,7 @@ export default function Header() {
               exact
               activeClassName={styles.activePage}
               className={styles.menuLinks}>
-              About us
+              About
             </NavLink>
             <NavLink
               to="/contact"

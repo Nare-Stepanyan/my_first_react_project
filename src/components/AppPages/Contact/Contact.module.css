@@ -10,25 +10,25 @@ form {
 }
 .sendButton {
   width: 240px;
-  border: 1px solid #1d75ba;
+  border: 1px solid #11b5d7;
   margin: 20px auto !important;
-  color: #1d75ba;
+  color: #11b5d7;
 }
 .label {
-  color: #1d75ba;
+  color: #11b5d7;
 }
 .sendButton:hover {
-  color: #1d75ba;
+  color: #11b5d7;
 }
 .sendButtonActive {
   width: 240px;
-  border: 1px solid #1d75ba;
+  border: 1px solid #11b5d7;
   margin: 20px auto !important;
-  color: #1d75ba;
+  color: #11b5d7;
 }
 .sendButtonActive:hover {
   color: #fff;
   background-color: #d74a34;
   border: none;
-  box-shadow: 5px 5px 5px grey;
+  box-shadow: 2px 2px 2px grey;
 }

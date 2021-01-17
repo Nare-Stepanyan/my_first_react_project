@@ -50,7 +50,7 @@ class EditTaskModal extends PureComponent {
       <>
         <Modal show={true} onHide={props.onClose} centered>
           <Modal.Header closeButton>
-            <Modal.Title>Edit Task</Modal.Title>
+            <Modal.Title className={styles.title}>Edit Task</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <FormControl
@@ -78,10 +78,16 @@ class EditTaskModal extends PureComponent {
             />
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="primary" onClick={this.saveModal}>
+            <Button
+              variant="custom"
+              className={styles.saveBtn}
+              onClick={this.saveModal}>
               Save Changes
             </Button>
-            <Button variant="secondary" onClick={props.onClose}>
+            <Button
+              variant="custom"
+              className={styles.cancelBtn}
+              onClick={props.onClose}>
               Cancel
             </Button>
           </Modal.Footer>

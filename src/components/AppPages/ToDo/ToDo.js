@@ -191,6 +191,7 @@ class ToDo extends PureComponent {
             {showSearch && <Search />}
             <div className={styles.buttons}>
               <Button
+                variant="custom"
                 className={styles.addButton}
                 onClick={this.toggleAddTaskModal}
                 disabled={!!selectedTasks.size}>

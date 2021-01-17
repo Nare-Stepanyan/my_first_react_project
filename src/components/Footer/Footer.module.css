@@ -15,7 +15,7 @@
 .iconLinkdin {
   font-size: 20px;
   margin-right: 10px;
-  color: #0a66c2;
+  color: #11b5d7;
 }
 .iconGit {
   font-size: 20px;
@@ -23,8 +23,7 @@
   color: #d74a34;
 }
 .footer {
-  box-shadow: 0px -2px 5px;
-  border-top: 2px solid #1d75ba;
+  box-shadow: 0 5px 10px #d6c8ad;
   padding: 15px 0 10px;
   margin-top: auto;
   width: 100%;

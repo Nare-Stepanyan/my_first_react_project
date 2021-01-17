@@ -10,3 +10,11 @@ body {
   display: flex;
   flex-direction: column;
 }
+.close {
+  color: #0f6d89 !important;
+  opacity: 1;
+}
+.close:hover {
+  color: #0f6d89 !important;
+  opacity: 1;
+}

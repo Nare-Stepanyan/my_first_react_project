@@ -14,7 +14,7 @@ function InputTask(props) {
   return (
     <Modal show={true} onHide={props.onClose} centered>
       <Modal.Header closeButton>
-        <Modal.Title>Task Details</Modal.Title>
+        <Modal.Title className={styles.taskTitle}>Task Details</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <FormControl
@@ -40,10 +40,17 @@ function InputTask(props) {
         />
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="primary" onClick={props.handleClick}>
+        <Button
+          variant="custom"
+          className={styles.add}
+          style={{ outline: "none" }}
+          onClick={props.handleClick}>
           Add
         </Button>
-        <Button variant="secondary" onClick={props.onClose}>
+        <Button
+          variant="custom"
+          className={styles.cancel}
+          onClick={props.onClose}>
           Cancel
         </Button>
       </Modal.Footer>

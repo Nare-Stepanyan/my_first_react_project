@@ -41,7 +41,9 @@ class Task extends PureComponent {
       <Card className={`${styles.card} ${checked && styles.selected}`}>
         <Card.Body>
           <input type="checkbox" onClick={this.handleCheck} />
-          <Card.Title className={styles.title}>
+          <Card.Title
+            style={{ background: newTask.status === "done" ? "#ffb85f" : "" }}
+            className={styles.title}>
             <Link to={`/task/${newTask._id}`}>
               {shortenString(newTask.title, 30)}
             </Link>
@@ -50,7 +52,7 @@ class Task extends PureComponent {
             {!!newTask.description && shortenString(newTask.description, 60)}
           </Card.Text>
           <Card.Text className={styles.status}>
-            Status: {newTask.status}
+            Status: <span>{newTask.status}</span>
           </Card.Text>
           <Card.Text className={styles.date}>
             Created at: {formatDate(newTask.created_at)}
@@ -61,7 +63,8 @@ class Task extends PureComponent {
           <div className={styles.buttons}>
             {newTask.status === "active" ? (
               <Button
-                variant="success"
+                variant="custom"
+                className={styles.doneBtn}
                 disabled={disabled}
                 onClick={() =>
                   this.props.changeStatus(
@@ -74,7 +77,8 @@ class Task extends PureComponent {
               </Button>
             ) : (
               <Button
-                variant="warning"
+                variant="custom"
+                className={styles.activeBtn}
                 disabled={disabled}
                 onClick={() =>
                   this.props.changeStatus(
@@ -87,7 +91,8 @@ class Task extends PureComponent {
               </Button>
             )}
             <Button
-              variant="info"
+              variant="custom"
+              className={styles.editBtn}
               disabled={disabled}
               onClick={() => onEdit(newTask)}>
               <FontAwesomeIcon icon={faEdit} />
