@@ -21,7 +21,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
+  width: 97%;
   flex-wrap: wrap;
 }
 .buttons button {
@@ -36,7 +36,7 @@
 }
 .main {
   max-width: 80%;
-  margin-bottom: 20px;
+  margin: 0 auto 30px auto;
 }
 .img {
   text-align: center;

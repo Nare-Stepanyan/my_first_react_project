@@ -173,7 +173,7 @@ class ToDo extends PureComponent {
     const { tasks } = this.props;
     const newTaskList = tasks.map((el, i) => {
       return (
-        <Col key={el._id} xs={12} sm={6} md={4} lg={3} xl={3}>
+        <Col key={el._id} xs={12} sm={6} md={4} lg={4} xl={3}>
           <Task
             newTask={el}
             onCheck={this.handleCheck}
