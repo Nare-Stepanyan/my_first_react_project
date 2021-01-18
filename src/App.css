@@ -40,3 +40,23 @@ body {
 .react-datepicker__year-text--keyboard-selected {
   background-color: #11b5d7 !important;
 }
+.react-datepicker__day--selected,
+.react-datepicker__day--in-selecting-range,
+.react-datepicker__day--in-range,
+.react-datepicker__month-text--selected,
+.react-datepicker__month-text--in-selecting-range,
+.react-datepicker__month-text--in-range,
+.react-datepicker__quarter-text--selected,
+.react-datepicker__quarter-text--in-selecting-range,
+.react-datepicker__quarter-text--in-range,
+.react-datepicker__year-text--selected,
+.react-datepicker__year-text--in-selecting-range,
+.react-datepicker__year-text--in-range textarea:focus {
+  background-color: #11b5d7 !important;
+}
+input:focus,
+textarea:focus {
+  border: 1px solid lightgray !important;
+  outline: none !important;
+  box-shadow: 0 0 1px 1px lightgray !important;
+}
