@@ -35,3 +35,20 @@
 .connect {
   margin: 0 20px;
 }
+@media (max-width: 768px) {
+  .text {
+    font-size: 11px;
+  }
+  .iconLinkdin {
+    font-size: 14px;
+    margin-right: 5px;
+  }
+  .iconGit {
+    font-size: 14px;
+    margin-right: 5px;
+  }
+  .social {
+    flex-direction: column;
+    align-items: center;
+  }
+}

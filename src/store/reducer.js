@@ -8,7 +8,9 @@ const defaultState = {
   editOneTaskSuccess: false,
   loading: false,
   task: null,
+  sendFormSuccess: false,
 };
+
 export const reducer = (state = defaultState, action) => {
   switch (action.type) {
     case actionTypes.ERROR:
@@ -25,6 +27,7 @@ export const reducer = (state = defaultState, action) => {
         errorMessage: null,
         addTaskSuccess: false,
         editOneTaskSuccess: false,
+        sendFormSuccess: false,
       };
     case actionTypes.GET_TASKS_SUCCESS:
       return {
@@ -138,6 +141,7 @@ export const reducer = (state = defaultState, action) => {
       return {
         ...state,
         loading: false,
+        sendFormSuccess: true,
         successMessage: "Message sent successfully!!!",
       };
     }

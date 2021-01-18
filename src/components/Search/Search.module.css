@@ -9,6 +9,7 @@
 .nav input {
   border: 1px solid #ced4da;
   border-radius: 0.25rem;
+  width: inherit;
 }
 .navbar {
   padding: 0;
@@ -59,4 +60,9 @@
 }
 .formControl {
   margin-top: 10px;
+}
+@media (max-width: 576px) {
+  .formButton {
+    margin-left: 0px;
+  }
 }

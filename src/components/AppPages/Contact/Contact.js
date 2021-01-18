@@ -11,6 +11,16 @@ class Contact extends React.PureComponent {
     email: "",
     message: "",
   };
+  componentDidUpdate(prevProps) {
+    if (!prevProps.sendFormSuccess && this.props.sendFormSuccess) {
+      this.setState({
+        name: "",
+        email: "",
+        message: "",
+        formFilled: false,
+      });
+    }
+  }
   handleChange = (event) => {
     const { name, value } = event.target;
     this.setState(
@@ -45,11 +55,7 @@ class Contact extends React.PureComponent {
       email,
       message,
     };
-    this.setState({
-      name: "",
-      email: "",
-      message: "",
-    });
+
     sendFormMessage(formMessage);
   };
 
@@ -117,7 +123,12 @@ class Contact extends React.PureComponent {
     );
   }
 }
+const mapStateToProps = (state) => {
+  return {
+    sendFormSuccess: state.sendFormSuccess,
+  };
+};
 const mapDispatchToProps = {
   sendFormMessage,
 };
-export default connect(null, mapDispatchToProps)(Contact);
+export default connect(mapStateToProps, mapDispatchToProps)(Contact);
