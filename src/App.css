@@ -56,7 +56,7 @@ body {
 }
 input:focus,
 textarea:focus {
-  border: 1px solid #11b5d7 !important;
+  border: 1px solid lightgray !important;
   outline: none !important;
-  box-shadow: 0 0 1px 1px #11b5d7 !important;
+  box-shadow: 0 0 1px 1px lightgray !important;
 }
