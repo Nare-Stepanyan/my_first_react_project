@@ -3,6 +3,7 @@
   color: #11b5d7 !important;
   font-size: 20px !important;
   border: 1px solid #11b5d7;
+  width: 140px;
 }
 .addButton:hover,
 .addButton:focus {
