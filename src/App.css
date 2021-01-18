@@ -29,3 +29,14 @@ body {
   text-decoration: none;
   background-color: #d5a465 !important;
 }
+.react-datepicker__current-month,
+.react-datepicker-time__header,
+.react-datepicker-year-header {
+  color: #11b5d7 !important;
+}
+.react-datepicker__day--keyboard-selected,
+.react-datepicker__month-text--keyboard-selected,
+.react-datepicker__quarter-text--keyboard-selected,
+.react-datepicker__year-text--keyboard-selected {
+  background-color: #11b5d7 !important;
+}

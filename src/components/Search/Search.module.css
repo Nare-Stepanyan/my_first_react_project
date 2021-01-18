@@ -6,6 +6,10 @@
   margin-bottom: 15px;
   margin-right: 10px;
 }
+.nav input:focus {
+  border: 1px solid #d5a465 !important;
+  outline: none !important;
+}
 .nav input {
   border: 1px solid #ced4da;
   border-radius: 0.25rem;
