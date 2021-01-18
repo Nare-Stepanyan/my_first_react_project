@@ -1,6 +1,10 @@
 body {
   background-color: #f8f9fa !important;
   height: 100vh;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif !important;
 }
 .wrapper {
   max-width: 1200px;
