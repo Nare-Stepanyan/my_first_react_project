@@ -31,7 +31,10 @@ export default function About() {
       <p className={styles.third}>
         If you want to look through the source code just check out my
         <Link
-          to={{ pathname: "https://github.com/Nare-Stepanyan" }}
+          to={{
+            pathname:
+              "https://github.com/Nare-Stepanyan/my_first_react_project",
+          }}
           target="_blank">
           <span className={styles.text}> Github</span>.
         </Link>
