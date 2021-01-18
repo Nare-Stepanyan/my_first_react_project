@@ -15,6 +15,7 @@ import {
   removeAll,
   removeSelected,
 } from "./../../../store/actions";
+import image from "./../../../assets/images/main.png";
 
 class ToDo extends PureComponent {
   state = {
@@ -172,7 +173,7 @@ class ToDo extends PureComponent {
     const { tasks } = this.props;
     const newTaskList = tasks.map((el, i) => {
       return (
-        <Col key={el._id} xs={12} sm={6} md={4} lg={3} xl={3}>
+        <Col key={el._id} xs={12} sm={6} md={4} lg={4} xl={3}>
           <Task
             newTask={el}
             onCheck={this.handleCheck}
@@ -190,6 +191,7 @@ class ToDo extends PureComponent {
             {showSearch && <Search />}
             <div className={styles.buttons}>
               <Button
+                variant="custom"
                 className={styles.addButton}
                 onClick={this.toggleAddTaskModal}
                 disabled={!!selectedTasks.size}>
@@ -220,6 +222,11 @@ class ToDo extends PureComponent {
             <Row>{newTaskList}</Row>
           </Container>
         </div>
+        {!tasks.length && (
+          <div className={styles.img}>
+            <img src={image} alt="task manager" className={styles.main} />
+          </div>
+        )}
         {removeAllConfirm && (
           <Confirm
             removeAll={this.removeAll}

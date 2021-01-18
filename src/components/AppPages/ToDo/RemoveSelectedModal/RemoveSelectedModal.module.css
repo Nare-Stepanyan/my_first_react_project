@@ -1,0 +1,7 @@
+.warning {
+  color: rgb(10, 105, 132);
+}
+.cancel:hover {
+  background-color: transparent;
+  color: #dc3545;
+}

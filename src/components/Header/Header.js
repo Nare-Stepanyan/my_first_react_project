@@ -1,7 +1,7 @@
 import React from "react";
 import { Navbar, Nav } from "react-bootstrap";
 import { Link, NavLink } from "react-router-dom";
-import logo from "./../../assets/images/toDoLogo.png";
+import logo from "./../../assets/images/logo.png";
 import styles from "./Header.module.css";
 
 export default function Header() {
@@ -28,7 +28,7 @@ export default function Header() {
               exact
               activeClassName={styles.activePage}
               className={styles.menuLinks}>
-              About us
+              About
             </NavLink>
             <NavLink
               to="/contact"

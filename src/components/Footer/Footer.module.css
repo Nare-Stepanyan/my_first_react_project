@@ -1,0 +1,54 @@
+.social {
+  display: flex;
+  justify-content: center;
+}
+.social span {
+  display: inline-block;
+}
+.rights {
+  padding: 10px;
+  text-align: center;
+  font-size: 12px;
+  color: #6a717d;
+  font-weight: bold;
+}
+.iconLinkdin {
+  font-size: 20px;
+  margin-right: 10px;
+  color: #11b5d7;
+}
+.iconGit {
+  font-size: 20px;
+  margin-right: 10px;
+  color: #d74a34;
+}
+.footer {
+  box-shadow: 0 5px 20px #d6c8ad;
+  padding: 15px 0 10px;
+  margin-top: auto;
+  width: 100%;
+}
+.text {
+  font-size: 14px;
+  color: #6a717d;
+}
+.connect {
+  margin: 0 20px;
+}
+@media (max-width: 768px) {
+  .text {
+    font-size: 11px;
+  }
+  .iconLinkdin {
+    font-size: 14px;
+    margin-right: 5px;
+  }
+  .iconGit {
+    font-size: 14px;
+    margin-right: 5px;
+  }
+  .social {
+    flex-direction: column;
+    align-items: center;
+  }
+}

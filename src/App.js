@@ -3,6 +3,7 @@ import "./App.css";
 import "react-toastify/dist/ReactToastify.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
 import ToDo from "./components/AppPages/ToDo/ToDo";
 import About from "./components/AppPages/About/About";
 import Contact from "./components/AppPages/Contact/Contact";
@@ -33,6 +34,8 @@ function App(props) {
         <Route path="/404" exact component={NotFound} />
         <Redirect to="/404" />
       </Switch>
+      <Footer />
+
       <ToastContainer
         position="bottom-left"
         autoClose={3000}

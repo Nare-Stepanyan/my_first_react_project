@@ -3,32 +3,49 @@
   display: flex;
   word-break: break-all;
   padding: 5px;
-  color: #fff;
+  color: #061036;
+  background: transparent;
+  border-radius: 8px;
+  background-color: #e4d5d0;
 }
 .card {
-  background-color: #e090b9 !important;
-  margin: 20px auto;
+  background-color: #f8f9fa !important;
+  margin: 10px auto;
+  outline: 1px solid #d6c8ad;
+  box-shadow: 0 5px 10px #d6c8ad;
+  border-radius: 8px;
+  outline: none;
+  margin-bottom: 30px;
 }
 .selected {
   border: 2px solid #fff !important;
 }
 .title a {
   font-size: 24px !important;
-  color: #061036 !important;
-
+  color: #fff !important;
   text-decoration: none;
 }
 .title {
   text-align: center;
+  border-radius: 10px;
+  padding: 10px;
+  background: #11b5d7;
 }
 .date {
   font-size: 12px !important;
   color: #061036;
+  background-color: #dee7ef;
+  border-radius: 8px;
+  padding: 5px;
 }
 .deadline {
-  font-size: 12px !important;
-  color: #061036;
+  font-size: 14px !important;
+  color: #db2a47;
   font-weight: bold;
+  border-radius: 8px;
+  padding: 5px;
+
+  margin-bottom: 30px;
 }
 .buttons {
   display: flex;
@@ -39,5 +56,41 @@
   margin: 0 10px;
 }
 .status {
+  color: #061036;
+  font-size: 14px !important;
+  background-color: transparent;
+  border-radius: 8px;
+  padding: 5px;
+  background-color: #dee7ef;
+}
+.status span {
+  font-weight: bold;
+}
+.doneBtn {
+  background-color: #2ea822;
   color: #fff;
+}
+.doneBtn:hover,
+.doneBtn:focus {
+  background-color: #2ea822;
+  color: #fff;
+}
+.editBtn {
+  color: #fff;
+  background-color: #11b5d7;
+}
+.editBtn:hover,
+.editBtn:focus {
+  color: #fff;
+  background-color: #11b5d7;
+}
+.activeBtn {
+  color: #fff;
+  background-color: #d5a465;
+}
+
+.activeBtn:hover,
+.activeBtn:focus {
+  color: #fff;
+  background-color: #d5a465;
 }

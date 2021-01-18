@@ -110,7 +110,7 @@ function Search(props) {
     props.getTasks(data);
   };
   return (
-    <div>
+    <div className={styles.search}>
       <Navbar bg="light" expand="lg">
         <Navbar.Brand>
           <span className={styles.sortFilter}>Sort and Filter:</span>
@@ -123,7 +123,7 @@ function Search(props) {
                 return (
                   <NavDropdown.Item
                     key={index}
-                    className={styles.input}
+                    className={styles.options}
                     onClick={() => setStatus(item)}
                     active={status.value === item.value}>
                     {item.label}
@@ -137,6 +137,7 @@ function Search(props) {
               {sortOptions.map((item, index) => {
                 return (
                   <NavDropdown.Item
+                    className={styles.options}
                     key={index}
                     onClick={() => setSort(item)}
                     active={sort.value === item.value}>
@@ -168,41 +169,22 @@ function Search(props) {
         </Navbar.Collapse>
       </Navbar>
       <div className={styles.sortNav}>
-        <Form inline>
+        <Form inline className={styles.searchBtn}>
           <FormControl
+            className={styles.formControl}
             type="text"
             placeholder="Search"
-            className="mr-sm-2 mb-2"
             value={search}
             onChange={(event) => setSearch(event.target.value)}
           />
           <Button
-            variant="outline-success"
-            className="mr-sm-2 mb-2"
+            className={styles.formButton}
+            variant="custom"
             onClick={handleSubmit}>
             Search
           </Button>
         </Form>
       </div>
-
-      {/* <div>
-        {dateOptions.map((item, index) => {
-          return (
-            <div key={index}>
-              <span>{item.label} </span>
-              <DatePicker
-                selected={dates[item.value]}
-                onChange={(date) => {
-                  setDates({
-                    ...dates,
-                    [item.value]: date,
-                  });
-                }}
-              />
-            </div>
-          );
-        })}
-      </div> */}
     </div>
   );
 }

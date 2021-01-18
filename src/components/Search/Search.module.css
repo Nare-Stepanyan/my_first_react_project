@@ -9,6 +9,7 @@
 .nav input {
   border: 1px solid #ced4da;
   border-radius: 0.25rem;
+  width: inherit;
 }
 .navbar {
   padding: 0;
@@ -17,13 +18,51 @@
 .label {
   color: rgba(0, 0, 0, 0.5);
 }
+.label:focus {
+  border: 1px solid rgba(0, 0, 0, 0.5) !important;
+  outline: none;
+}
+.options {
+  color: rgba(0, 0, 0, 0.5);
+}
+.options:hover {
+  color: rgba(0, 0, 0, 0.5);
+}
 .sortNav {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   margin-left: 15px;
+  max-width: 300px;
 }
 .sortFilter {
-  font-size: 24px;
-  color: #28a745;
+  font-size: 20px;
+  font-weight: bold;
+  color: #d5a465;
+}
+.searchBtn {
+  display: flex;
+  margin: 0;
+}
+.search {
+  margin-top: 15px;
+}
+.formButton {
+  margin-left: 15px;
+  margin-top: 10px;
+  background-color: #d5a465;
+  color: #fff;
+}
+.formButton:hover {
+  color: #d5a465;
+  border: 1px solid #d5a465;
+  background-color: transparent;
+}
+.formControl {
+  margin-top: 10px;
+}
+@media (max-width: 576px) {
+  .formButton {
+    margin-left: 0px;
+  }
 }

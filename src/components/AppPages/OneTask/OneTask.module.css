@@ -1,7 +1,11 @@
-.date {
-  font-size: 12px !important;
-  color: #061036;
+.dateDeadline {
+  font-size: 16px !important;
+  color: #db2a47;
   font-weight: bold;
+}
+.dateCreated {
+  color: #6a717d;
+  font-size: 16px !important;
 }
 .buttons {
   display: flex;
@@ -10,4 +14,52 @@
 }
 .buttons button {
   margin: 0 10px;
+}
+.card {
+  max-width: 800px;
+  margin: 20px auto;
+  border-radius: 8px;
+  box-shadow: 0 5px 10px #d6c8ad;
+}
+.status {
+  color: #fff;
+  font-size: 16px;
+  padding: 5px;
+  width: 200px;
+  margin: 20px auto;
+}
+.title {
+  color: #fff;
+  font-size: 26px !important;
+}
+.description {
+  color: #6a717d;
+}
+.doneBtn {
+  background-color: #2ea822;
+  color: #fff;
+}
+.doneBtn:hover,
+.doneBtn:focus {
+  background-color: #2ea822;
+  color: #fff;
+}
+.editBtn {
+  color: #fff;
+  background-color: #11b5d7;
+}
+.editBtn:hover,
+.editBtn:focus {
+  color: #fff;
+  background-color: #11b5d7;
+}
+.activeBtn {
+  color: #fff;
+  background-color: #d5a465;
+}
+
+.activeBtn:hover,
+.activeBtn:focus {
+  color: #fff;
+  background-color: #d5a465;
 }

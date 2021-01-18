@@ -1,0 +1,27 @@
+.about {
+  color: #6a717d;
+  margin-top: 5px;
+  padding: 20px;
+  font-size: 20px;
+}
+.first span {
+  font-weight: bold;
+  color: #11b5d7;
+}
+.text {
+  color: #11b5d7;
+}
+.second a:hover {
+  text-decoration: none;
+}
+.third a:hover {
+  text-decoration: none;
+}
+.img {
+  text-align: center;
+  margin: 30px auto;
+  width: 80%;
+}
+.img img {
+  max-width: 100%;
+}

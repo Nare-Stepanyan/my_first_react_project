@@ -30,6 +30,7 @@ export function getTasks(data = {}) {
 }
 
 export function inputTask(body) {
+  console.log(body);
   return (dispatch) => {
     dispatch({ type: actionTypes.LOADING });
     const url = `${apiUrl}/task`;
@@ -171,6 +172,26 @@ export function removeOneTask(id, path) {
       })
       .catch((err) => {
         dispatch({ type: actionTypes.ERROR, error: err.message });
+      });
+  };
+}
+
+export function sendFormMessage(body) {
+  return (dispatch) => {
+    dispatch({ type: actionTypes.LOADING });
+    const url = `${apiUrl}/form`;
+    request(url, "POST", body)
+      .then((res) => {
+        console.log(res);
+        dispatch({
+          type: actionTypes.SEND_FORM_MESSAGE_SUCCESS,
+        });
+      })
+      .catch((err) => {
+        dispatch({
+          type: actionTypes.ERROR,
+          error: "🖊 Try again, something was not written correctly! ",
+        });
       });
   };
 }

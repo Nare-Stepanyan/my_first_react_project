@@ -1,7 +1,13 @@
 .addButton {
   background-color: #f8f9fa !important;
-  color: #1d75ba !important;
+  color: #11b5d7 !important;
   font-size: 20px !important;
+  border: 1px solid #11b5d7;
+}
+.addButton:hover,
+.addButton:focus {
+  background-color: #11b5d7 !important;
+  color: #f8f9fa !important;
 }
 .removeButton {
   font-size: 14px !important;
@@ -15,7 +21,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
+  width: 97%;
   flex-wrap: wrap;
 }
 .buttons button {
@@ -27,4 +33,11 @@
 .container {
   max-width: 1400px;
   margin: 0 auto;
+}
+.main {
+  max-width: 80%;
+  margin: 0 auto 30px auto;
+}
+.img {
+  text-align: center;
 }
