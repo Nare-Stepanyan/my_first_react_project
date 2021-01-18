@@ -182,7 +182,6 @@ export function sendFormMessage(body) {
     const url = `${apiUrl}/form`;
     request(url, "POST", body)
       .then((res) => {
-        console.log(res);
         dispatch({
           type: actionTypes.SEND_FORM_MESSAGE_SUCCESS,
         });
