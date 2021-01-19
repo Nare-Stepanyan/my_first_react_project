@@ -24,7 +24,7 @@ export default function About() {
             pathname: "https://www.linkedin.com/in/nare-stepanyan-4aa3171b5/",
           }}
           target="_blank">
-          <span className={styles.text}> Linkdin</span>
+          <span className={styles.text}> Linkedin</span>
         </Link>
         . Any opinion will be beneficial. I appreciate your time.
       </p>

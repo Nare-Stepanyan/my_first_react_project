@@ -24,7 +24,7 @@ export default function Footer() {
             }}
             target="_blank">
             <FaLinkedinIn className={styles.iconLinkdin} />
-            <span className={styles.text}>Send me a message on Linkdin</span>
+            <span className={styles.text}>Send me a message on Linkedin</span>
           </Link>
         </p>
       </div>
