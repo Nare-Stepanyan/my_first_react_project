@@ -50,7 +50,8 @@ class EditTaskModal extends PureComponent {
       <>
         <Modal show={true} onHide={props.onClose} centered>
           <Modal.Header closeButton>
-            <Modal.Title className={styles.title}>Edit Task</Modal.Title>
+            {/* <Modal.Title className={styles.title}>Edit Task</Modal.Title> */}
+            <Modal.Title className={styles.title}>Edit Job</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <FormControl

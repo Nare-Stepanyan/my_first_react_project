@@ -9,7 +9,8 @@ function RemoveOneTaskModal(props) {
       <Modal show={true} onHide={props.handleClose} centered>
         <Modal.Header closeButton>
           <Modal.Title className={styles.warning}>
-            Are you sure to remove this task?
+            {/* Are you sure to remove this task? */}
+            Are you sure to remove this job?
           </Modal.Title>
         </Modal.Header>
         <Modal.Footer>

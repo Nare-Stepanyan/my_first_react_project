@@ -41,7 +41,8 @@ export const reducer = (state = defaultState, action) => {
         ...state,
         tasks: tasks,
         loading: false,
-        successMessage: "Task added successfully!!!",
+        //successMessage: "Task added successfully!!!",
+        successMessage: "Job added successfully!!!",
         addTaskSuccess: true,
       };
     case actionTypes.DELETE_TASK_SUCCESS: {
@@ -50,7 +51,8 @@ export const reducer = (state = defaultState, action) => {
         ...state,
         tasks: newTasks,
         loading: false,
-        successMessage: "Task deleted successfully!!!",
+        //successMessage: "Task deleted successfully!!!",
+        successMessage: "Job deleted successfully!!!",
       };
     }
     case actionTypes.SAVE_EDITED_TASK_SUCCESS: {
@@ -63,14 +65,17 @@ export const reducer = (state = defaultState, action) => {
         ...state,
         tasks: tasks,
         loading: false,
-        successMessage: "Task edited successfully!!!",
+        //successMessage: "Task edited successfully!!!",
+        successMessage: "Job edited successfully!!!",
       };
     }
     case actionTypes.CHANGE_STATUS_SUCCESS: {
       let message;
       if (action.task.status === "done") {
-        message = "Congratulations, task completed!!!";
-      } else message = "Task is active now!";
+        // message = "Congratulations, task completed!!!";
+        message = "Congratulations, job completed!!!";
+      } //else message = "Task is active now!";
+      else message = "Task is active now!";
       if (action.from === "single") {
         return {
           ...state,
@@ -98,7 +103,8 @@ export const reducer = (state = defaultState, action) => {
         ...state,
         tasks: [],
         loading: false,
-        successMessage: "All tasks deleted successfully!!!",
+        //successMessage: "All tasks deleted successfully!!!",
+        successMessage: "All jobs deleted successfully!!!",
       };
     }
     case actionTypes.REMOVE_SELECTED_SUCCESS: {
@@ -110,7 +116,8 @@ export const reducer = (state = defaultState, action) => {
         ...state,
         tasks,
         loading: false,
-        successMessage: "Selected tasks deleted successfully!!!",
+        //successMessage: "Selected tasks deleted successfully!!!",
+        successMessage: "Selected jobs deleted successfully!!!",
       };
     }
     case actionTypes.OPEN_ONE_TASK_SUCCESS: {
@@ -134,7 +141,8 @@ export const reducer = (state = defaultState, action) => {
         task,
         editOneTaskSuccess: true,
         loading: false,
-        successMessage: "Task edited successfully!!!",
+        //successMessage: "Task edited successfully!!!",
+        successMessage: "Job edited successfully!!!",
       };
     }
     case actionTypes.SEND_FORM_MESSAGE_SUCCESS: {
