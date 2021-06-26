@@ -9,7 +9,8 @@ function Confirm(props) {
       <Modal show={true} onHide={props.handleClose} centered>
         <Modal.Header closeButton>
           <Modal.Title className={styles.warning}>
-            Are you sure to remove all tasks?
+            {/* Are you sure to remove all tasks? */}
+            Are you sure to remove all jobs?
           </Modal.Title>
         </Modal.Header>
         <Modal.Footer>

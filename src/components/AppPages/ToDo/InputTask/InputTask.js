@@ -14,7 +14,8 @@ function InputTask(props) {
   return (
     <Modal show={true} onHide={props.onClose} centered>
       <Modal.Header closeButton>
-        <Modal.Title className={styles.taskTitle}>Task Details</Modal.Title>
+        {/* <Modal.Title className={styles.taskTitle}>Task Details</Modal.Title> */}
+        <Modal.Title className={styles.taskTitle}>Job Details</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <FormControl

@@ -8,11 +8,17 @@ function RemoveSelectedModal(props) {
     <>
       <Modal show={true} onHide={props.handleClose} centered>
         <Modal.Header closeButton>
-          <Modal.Title className={styles.warning}>
+          {/* <Modal.Title className={styles.warning}>
             Are you sure to remove
             {props.count > 1
               ? ` ${props.count}  tasks?`
               : ` ${props.count} task?`}
+          </Modal.Title> */}
+          <Modal.Title className={styles.warning}>
+            Are you sure to remove
+            {props.count > 1
+              ? ` ${props.count}  jobs?`
+              : ` ${props.count} job?`}
           </Modal.Title>
         </Modal.Header>
         <Modal.Footer>

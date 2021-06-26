@@ -195,7 +195,8 @@ class ToDo extends PureComponent {
                 className={styles.addButton}
                 onClick={this.toggleAddTaskModal}
                 disabled={!!selectedTasks.size}>
-                Add Task
+                {/* Add Task */}
+                Add Job
               </Button>
               <div className={styles.removeButtons}>
                 {!!tasks.length && (
